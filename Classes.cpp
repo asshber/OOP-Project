@@ -1,6 +1,6 @@
 class two_wheeler
 {
-	double virtual getprice() {}
+	double virtual getprice() = 0;
 };
 class suzuki :public two_wheeler
 {
@@ -38,7 +38,7 @@ private:
 class four_wheeler
 {
 private:
-	double virtual getprice() {}
+	double virtual getprice() = 0;
 };
 class audi :public four_wheeler
 {
@@ -76,7 +76,7 @@ private:
 class six_wheeler
 {
 private:
-	double virtual getprice() {}
+	double virtual getprice() = 0;
 };
 class isuzu : public six_wheeler
 {
@@ -117,6 +117,5 @@ class Admin
 };
 int main()
 {
-
+	volvo obj;
 }
-//hi
