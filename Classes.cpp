@@ -6,15 +6,20 @@ private:
 	int stock, horsepower;
 	string description;
 protected:
-	void set_color() {
+	void set_color(string color) {
+		color = color;
 	 }
-	void set_name() {
+	void set_name(string name) {
+		name = name;
 	}
-	int set_stock() {
+	int set_stock(int stock) {
+		stock = stock;
 	}
-	int set_horsepower() {
+	int set_horsepower(int horsepower) {
+		horsepower = horsepower;
 	}
-	void set_description() {
+	void set_description(string description) {
+		description = description;
 	}
 	void get_color() {
 		return color;
@@ -39,7 +44,8 @@ private:
 	friend class Admin;
 	double price;
 protected:
-	double setprice() {
+	double setprice(double price) {
+		price = price;
 
 	}
 	double getprice() 
@@ -53,7 +59,8 @@ private:
 	friend class Admin;
 	double price;
 protected:
-	double setprice() {
+	double setprice(double price) {
+		price = price;
 
 	}
 	double getprice()
@@ -67,7 +74,8 @@ private:
 	friend class Admin;
 	double price;
 protected:
-	double setprice() {
+	double setprice(double price) {
+		price = price;
 
 	}
 	double getprice()
@@ -83,15 +91,20 @@ private:
 	int stock, horsepower;
 	string description;
 protected:
-	void set_color() {
+	void set_color(string color) {
+		color = color;
 	}
-	void set_name() {
+	void set_name(string name) {
+		name = name;
 	}
-	int set_stock() {
+	int set_stock(int stock) {
+		stock = stock;
 	}
-	int set_horsepower() {
+	int set_horsepower(int horsepower) {
+		horsepower = horsepower;
 	}
-	void set_description() {
+	void set_description(string description) {
+		description = description;
 	}
 	void get_color() {
 		return color;
@@ -116,7 +129,8 @@ private:
 	friend class Admin;
 	double price;
 protected:
-	double setprice() {
+	double setprice(double price) {
+		price = price;
 
 	}
 	double getprice()
@@ -130,8 +144,8 @@ private:
 	friend class Admin;
 	double price;
 protected:
-	double setprice() {
-
+	double setprice(double price) {
+		price = price;
 	}
 	double getprice()
 	{
@@ -144,7 +158,9 @@ private:
 	friend class Admin;
 	double price;
 protected:
-	double setprice() {
+	double setprice(double price) {
+		price = price;
+
 
 	}
 	double getprice()
@@ -161,15 +177,20 @@ private:
 	int stock, horsepower;
 	string description;
 protected:
-	void set_color() {
+	void set_color(string color) {
+		color = color;
 	}
-	void set_name() {
+	void set_name(string name) {
+		name = name;
 	}
-	int set_stock() {
+	int set_stock(int stock) {
+		stock = stock;
 	}
-	int set_horsepower() {
+	int set_horsepower(int horsepower) {
+		horsepower = horsepower;
 	}
-	void set_description() {
+	void set_description(string description) {
+		description = description;
 	}
 	void get_color() {
 		return color;
@@ -194,7 +215,9 @@ private:
 	friend class Admin;
 		double price;
 protected:
-	double setprice() {
+	double setprice(double price) {
+		price = price;
+
 
 	}
 	double getprice()
@@ -208,7 +231,9 @@ private:
 	friend class Admin;
 	double price;
 protected:
-	double setprice() {
+	double setprice(double price) {
+		price = price;
+
 
 	}
 	double getprice()
@@ -222,7 +247,9 @@ private:
 	friend class Admin;
 	double price;
 protected:
-	double setprice() {
+	double setprice(double price) {
+		price = price;
+
 
 	}
 	double getprice()
