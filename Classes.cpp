@@ -1,3 +1,4 @@
+#include"allheaders.h"
 class two_wheeler
 {
 	double virtual getprice() = 0;
@@ -21,10 +22,10 @@ protected:
 	void set_description(string d) {
 		description = d;
 	}
-	void get_color() {
+	string get_color() {
 		return color;
 	}
-	void get_name() {
+	string get_name() {
 		return name;
 	}
 	int get_stock() {
@@ -33,7 +34,7 @@ protected:
 	int get_horsepower() {
 		return horsepower;
 	}
-	void get_description() {
+	string get_description() {
 		return description;
 	}
 
@@ -106,10 +107,10 @@ protected:
 	void set_description(string d) {
 		description = d;
 	}
-	void get_color() {
+	string get_color() {
 		return color;
 	}
-	void get_name() {
+	string get_name() {
 		return name;
 	}
 	int get_stock() {
@@ -118,7 +119,7 @@ protected:
 	int get_horsepower() {
 		return horsepower;
 	}
-	void get_description() {
+	string get_description() {
 		return description;
 	}
 
@@ -192,10 +193,10 @@ protected:
 	void set_description(string d) {
 		description = d;
 	}
-	void get_color() {
+	string get_color() {
 		return color;
 	}
-	void get_name() {
+	string get_name() {
 		return name;
 	}
 	int get_stock() {
@@ -204,7 +205,7 @@ protected:
 	int get_horsepower() {
 		return horsepower;
 	}
-	void get_description() {
+	string get_description() {
 		return description;
 	}
 
