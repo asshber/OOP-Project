@@ -1,3 +1,4 @@
+#include"allheaders.h"
 class two_wheeler
 {
 	double virtual getprice() = 0;
