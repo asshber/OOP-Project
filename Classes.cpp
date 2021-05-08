@@ -1,26 +1,37 @@
 #include"allheaders.h"
-class two_wheeler
+vector<bikes> b;
+vector<cars> c;
+vector<trucks> t;
+class vehicles
 {
-	double virtual getprice() = 0;
 private:
-	string color, name;
+	string name, color;
 	int stock, horsepower;
 	string description;
-protected:
+	double price;
+public:
+	void set_price(double x)
+	{
+		price = x;
+	}
 	void set_color(string c) {
 		color = c;
-	 }
+	}
 	void set_name(string n) {
 		name = n;
 	}
-	int set_stock(int s) {
+	void set_stock(int s) {
 		stock = s;
 	}
-	int set_horsepower(int h) {
+	void set_horsepower(int h) {
 		horsepower = h;
 	}
 	void set_description(string d) {
 		description = d;
+	}
+	double get_price()
+	{
+		return price;
 	}
 	string get_color() {
 		return color;
@@ -37,230 +48,280 @@ protected:
 	string get_description() {
 		return description;
 	}
-
+	virtual void getdata() = 0;
 };
-class suzuki :public two_wheeler
+class bikes :public vehicles
 {
-private:
-	friend class Admin;
-	double price;
-protected:
-	double setprice(double p) {
-		price = p;
-
-	}
-	double getprice() 
+public:
+	void getdata()
 	{
-		return price;
+		string x;
+		int y;
+		double z;
+		//cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		cout << "\nEnter the Name of Bike: ";
+		getline(cin, x);
+		set_name(x);
+		cout << "\nEnter the Color of Bike: ";
+		cin >> x;
+		set_color(x);
+		cout << "\nEnter the availble units: ";
+		cin >> y;
+		set_stock(y);
+		cout << "\nEnter the price: ";
+		cin >> z;
+		set_price(z);
+		cout << "\nEnter the horespower of the engine: ";
+		cin >> y;
+		cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		set_horsepower(y);
+		cout << "\nEnter the Bike's Description: ";
+		getline(cin, x);
+		set_description(x);
 	}
-};
-class yamaha :public two_wheeler
-{
-private:
-	friend class Admin;
-	double price;
-protected:
-	double setprice(double p) {
-		price = p;
-
-	}
-	double getprice()
+	static void read()
 	{
-		return price;
+		bikes arr;
+		fstream file;
+		file.open("bikes.txt", ios::in);
+		while (file >> arr)
+			b.push_back(arr);
+		file.close();
 	}
-};
-class harley_davidson :public two_wheeler
-{
-private:
-	friend class Admin;
-	double price;
-protected:
-	double setprice(double p) {
-		price = p;
-
-	}
-	double getprice()
+	static void write()
 	{
-		return price;
+		fstream file;
+		file.open("bikes.txt", ios::out);
+		for (int i = 0; i < b.size(); ++i)
+		{
+			file << b[i];
+		}
+		file.close();
 	}
 };
-class four_wheeler
+fstream& operator<<(fstream& file, bikes& obj)
 {
-private:
-	double virtual getprice() = 0;
-	string color, name;
-	int stock, horsepower;
-	string description;
-protected:
-	void set_color(string c) {
-		color = c;
-	}
-	void set_name(string n) {
-		name = n;
-	}
-	int set_stock(int s) {
-		stock = s;
-	}
-	int set_horsepower(int h) {
-		horsepower = h;
-	}
-	void set_description(string d) {
-		description = d;
-	}
-	string get_color() {
-		return color;
-	}
-	string get_name() {
-		return name;
-	}
-	int get_stock() {
-		return stock;
-	}
-	int get_horsepower() {
-		return horsepower;
-	}
-	string get_description() {
-		return description;
-	}
-
-};
-class audi :public four_wheeler
+	file << ' ' << obj.get_name() << ';' << obj.get_color() << ' ' << obj.get_stock() <<' '<<obj.get_price()<< ' ' << obj.get_horsepower() << ' ' << obj.get_description() << ';';
+	return file;
+}
+fstream& operator>>(fstream& file, bikes& obj)
 {
-private:
-	friend class Admin;
-	double price;
-protected:
-	double setprice(double p) {
-		price = p;
-
-	}
-	double getprice()
+	string x;
+	int y;
+	double z;
+	file.get();
+	getline(file, x,';');
+	obj.set_name(x);
+	file >> x;
+	obj.set_color(x);
+	file.get();
+	file >> y;
+	obj.set_stock(y);
+	file.get();
+	file >> z;
+	obj.set_price(z);
+	file.get();
+	file >> y;
+	obj.set_horsepower(y);
+	file.get();
+	getline(file, x, ';');
+	obj.set_description(x);
+	return file;
+}
+class cars :public vehicles
+{
+	string transmission;
+public:
+	void getdata()
 	{
-		return price;
+		string x;
+		int y;
+		double z;
+		//cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		cout << "\nEnter the Name of Car: ";
+		getline(cin, x);
+		set_name(x);
+		cout << "\nEnter the Color of Car: ";
+		cin >> x;
+		set_color(x);
+		cout << "\nEnter the availble units: ";
+		cin >> y;
+		set_stock(y);
+		cout << "\nEnter the price: ";
+		cin >> z;
+		set_price(z);
+		cout << "\nEnter the horespower of the engine: ";
+		cin >> y;
+		set_horsepower(y);
+		cout << "\nEnter the Transmission of the Car: ";
+		cin >> x;
+		set_transmission(x);
+		cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		cout << "\nEnter the Car's Description: ";
+		getline(cin, x);
+		set_description(x);
 	}
-};
-class bmw : public four_wheeler
-{
-private:
-	friend class Admin;
-	double price;
-protected:
-	double setprice(double p) {
-		price = p;
-
-	}
-	double getprice()
+	void set_transmission(string& x)
 	{
-		return price;
+		transmission = x;
 	}
-};
-class tesla : public four_wheeler
-{
-private:
-	friend class Admin;
-	double price;
-protected:
-	double setprice(double p) {
-		price = p;
-
-	}
-	double getprice()
+	string get_transmission()
 	{
-		return price;
+		return transmission;
 	}
-};
-class six_wheeler
-{
-private:
-	double virtual getprice() = 0;
-private:
-	string color, name;
-	int stock, horsepower;
-	string description;
-protected:
-	void set_color(string c) {
-		color = c;
-	}
-	void set_name(string n) {
-		name = n;
-	}
-	int set_stock(int s) {
-		stock = s;
-	}
-	int set_horsepower(int h) {
-		horsepower = h;
-	}
-	void set_description(string d) {
-		description = d;
-	}
-	string get_color() {
-		return color;
-	}
-	string get_name() {
-		return name;
-	}
-	int get_stock() {
-		return stock;
-	}
-	int get_horsepower() {
-		return horsepower;
-	}
-	string get_description() {
-		return description;
-	}
-
-};
-class isuzu : public six_wheeler
-{
-private:
-	friend class Admin;
-		double price;
-protected:
-	double setprice(double p) {
-		price = p;
-
-	}
-	double getprice()
+	static void read()
 	{
-		return price;
+		cars arr;
+		fstream file;
+		file.open("cars.txt", ios::in);
+		while (file >> arr)
+		{
+			c.push_back(arr);
+		}
+		file.close();
 	}
-};
-class hyundai : public six_wheeler
-{
-private:
-	friend class Admin;
-	double price;
-protected:
-	double setprice(double p) {
-		price = p;
-
-	}
-	double getprice()
+	static void write()
 	{
-		return price;
+		fstream file;
+		file.open("cars.txt", ios::out);
+		for (int i = 0; i < c.size(); ++i)
+		{
+			file << c[i];
+		}
+		file.close();
 	}
 };
-class volvo : public six_wheeler
+fstream& operator<<(fstream& file, cars& obj)
 {
-private:
-	friend class Admin;
-	double price;
-protected:
-	double setprice(double p) {
-		price = p;
-
-	}
-	double getprice()
+	file << ' ' << obj.get_name() << ';' << obj.get_color() << ' ' << obj.get_stock() << ' ' << obj.get_price() << ' ' << obj.get_horsepower() << ' ' << obj.get_description() << ';' << obj.get_transmission() << ' ';
+	return file;
+}
+fstream& operator>>(fstream& file, cars& obj)
+{
+	string x;
+	int y;
+	double z;
+	file.get();
+	getline(file, x, ';');
+	obj.set_name(x);
+	file >> x;
+	obj.set_color(x);
+	file.get();
+	file >> y;
+	obj.set_stock(y);
+	file.get();
+	file >> z;
+	obj.set_price(z);
+	file.get();
+	file >> y;
+	obj.set_horsepower(y);
+	file.get();
+	getline(file, x, ';');
+	obj.set_description(x);
+	file >> x;
+	obj.set_transmission(x);
+	return file;
+}
+class trucks : public vehicles
+{
+	int loading_capacity;
+public:
+	void getdata()
 	{
-		return price;
+		string x;
+		int y;
+		double z;
+		//cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		cout << "\nEnter the Name of Truck: ";
+		getline(cin, x);
+		set_name(x);
+		cout << "\nEnter the Color of Truck: ";
+		cin >> x;
+		set_color(x);
+		cout << "\nEnter the availble units: ";
+		cin >> y;
+		set_stock(y);
+		cout << "\nEnter the price: ";
+		cin >> z;
+		set_price(z);
+		cout << "\nEnter the Loading Capapcity of the truck: ";
+		cin >> y;
+		set_loading_capacity(y);
+		cout << "\nEnter the horespower of the engine: ";
+		cin >> y;
+		cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		set_horsepower(y);
+		cout << "\nEnter the Truck's Description: ";
+		getline(cin, x);
+		set_description(x);
+	}
+	void set_loading_capacity(int& x)
+	{
+		loading_capacity = x;
+	}
+	int get_loading_capacity()
+	{
+		return loading_capacity;
+	}
+	static void write()
+	{
+		fstream file;
+		file.open("trucks.txt", ios::out);
+		for (int i = 0; i < t.size(); ++i)
+		{
+			file << t[i];
+		}
+		file.close();
+	}
+	static void read()
+	{
+		trucks arr;
+		fstream file;
+		file.open("trucks.txt", ios::in);
+		while (file >> arr)
+		{
+			t.push_back(arr);
+		}
+		file.close();
 	}
 };
-class Admin
+fstream& operator<<(fstream& file, trucks& obj)
 {
-
-};
+	file << ' ' << obj.get_name() << ';' << obj.get_color() << ' ' << obj.get_stock() << ' ' << obj.get_price() << ' ' << obj.get_horsepower() << ' ' << obj.get_description() << ';' << obj.get_loading_capacity() << ' ';
+	return file;
+}
+fstream& operator>>(fstream& file, trucks& obj)
+{
+	string x;
+	int y;
+	double z;
+	file.get();
+	getline(file, x, ';');
+	obj.set_name(x);
+	file >> x;
+	obj.set_color(x);
+	file.get();
+	file >> y;
+	obj.set_stock(y);
+	file.get();
+	file >> z;
+	obj.set_price(z);
+	file.get();
+	file >> y;
+	obj.set_horsepower(y);
+	file.get();
+	getline(file, x, ';');
+	obj.set_description(x);
+	file >> y;
+	obj.set_loading_capacity(y);
+	return file;
+}
 int main()
 {
-	volvo obj;
+	//For adding a trcuk
+	trucks::read();
+	trucks obj;
+	obj.getdata();
+	t.push_back(obj);
+	trucks::write();
 }
-//phonchoo
