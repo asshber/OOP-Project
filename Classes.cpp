@@ -1,5 +1,5 @@
 #include"allheaders.h"
-#include<string>
+
 vector<bikes> b;
 vector<cars> c;
 vector<trucks> t;
@@ -98,6 +98,13 @@ public:
 			file << b[i];
 		}
 		file.close();
+	}
+	static void list()
+	{
+		for (int i = 0; i < b.size(); i++)
+		{
+			cout << i + 1 << ": " << b[i].get_name() << "\n";
+		}
 	}
 };
 fstream& operator<<(fstream& file, bikes& obj)
@@ -319,6 +326,10 @@ fstream& operator>>(fstream& file, trucks& obj)
 }
 class admin
 {
+	public:
+	void car();
+	void truck();
+	void bike();
 public:
 	admin()
 	{
@@ -326,9 +337,7 @@ public:
 		cars::read();
 		bikes::read();
 	}
-	void car();
-	void truck();
-	void bike();
+	
 	
 	void menu()
 	{
@@ -389,6 +398,8 @@ public:
 			case 1:
 			{
 				cout << "change stock";
+				cin.ignore();
+				cin.get();
 			}
 			case 0:
 			{
@@ -396,13 +407,20 @@ public:
 				{
 				case 1:
 				{
-					cout << "break";
+					delete this;
+					exit(0);
 				}
 				}
 			}
 			}
 		}
 		}
+	}
+	~admin()
+	{
+		trucks::write();
+		cars::write();
+		bikes::write();
 	}
 };
 void admin::car()
@@ -677,15 +695,20 @@ void admin::bike()
 	system("CLS");
 	switch (a == 1)
 	{
-	case 1:
+	case 1: //for price
 	{
+		bikes::list();
+		cout << "\nEnter the S.No of the vheicle you want to change: ";
 		int a;
-		cout << "Enter new price" << endl;
 		cin >> a;
-		for (int i = 0; i < b.size(); i++)
-		{
-			b[i].set_price(a);
-		}
+		a--;
+		double x;
+		cout << "\n\nEnter the new Price: ";
+		cin >> x;
+		b[a].set_price(x);
+		cout << "\n\nPrice Updated successfully.\n\nPress any key to return to menu.";
+		cin.ignore();
+		cin.get();
 		system("CLS");
 		menu();
 	}
@@ -790,7 +813,7 @@ void admin::bike()
 }
 int main()
 	{
-		admin obj;
-		obj.menu();
+		admin* obj=new admin();
+		obj->menu();
 	}
 	//pohoncho lamao nub
