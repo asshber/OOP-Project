@@ -101,9 +101,10 @@ public:
 	}
 	static void list()
 	{
+		cout << "\nS.No" << "\t" << "Name of Bikes" << "\n\n";
 		for (int i = 0; i < b.size(); i++)
 		{
-			cout << i + 1 << ": " << b[i].get_name() << "\n";
+			cout << i + 1 << "\t" << b[i].get_name() << "\n";
 		}
 	}
 };
@@ -198,6 +199,14 @@ public:
 		}
 		file.close();
 	}
+	static void list()
+	{
+		cout << "\nS.No" << "\t" << "Name of Cars" << "\n\n";
+		for (int i = 0; i < c.size(); i++)
+		{
+			cout << i + 1 << ": " << c[i].get_name() << "\n";
+		}
+	}
 };
 fstream& operator<<(fstream& file, cars& obj)
 {
@@ -291,6 +300,14 @@ public:
 			t.push_back(arr);
 		}
 		file.close();
+	}
+	static void list()
+	{
+		cout << "\nS.No" << "\t" << "Name of Trucks" << "\n\n";
+		for (int i = 0; i < t.size(); i++)
+		{
+			cout << i + 1 << "\t" << t[i].get_name() << "\n";
+		}
 	}
 };
 fstream& operator<<(fstream& file, trucks& obj)
