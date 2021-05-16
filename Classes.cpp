@@ -404,6 +404,12 @@ public:
 		}
 		}
 	}
+	~admin()
+	{
+		trucks::write();
+		cars::write();
+		bikes::write();
+	}
 };
 void admin::car()
 {
