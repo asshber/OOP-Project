@@ -433,6 +433,7 @@ public:
 				}
 				case 0:
 				{
+					delete this;
 					exit(0);
 				}
 				}
@@ -495,6 +496,7 @@ void admin::car()
 				}
 				else
 				{
+					delete this;
 					exit(0);
 				}
 			}
@@ -625,6 +627,7 @@ void admin::truck()
 				}
 				else
 				{
+					delete this;
 					exit(0);
 				}
 
@@ -754,6 +757,7 @@ void admin::bike()
 				}
 				else
 				{
+					delete this;
 					exit(0);
 				}
 
@@ -837,7 +841,7 @@ void admin::bike()
 
 int main()
 {
-	admin obj;
+	admin* obj=new admin();
 	cout << "\tWELCOME TO SASUKE GARAGE" << endl;
 	cout << "\t*************************" << endl << endl << endl << endl;
 	cout << "\tPlease Choose any one:" << endl;
@@ -855,11 +859,11 @@ int main()
 	}
 	case 2:
 	{
-		obj.menu();
+		obj->menu();
 	}
 	case 3:
 	{
-	
+		delete obj;
 		exit(0);
 	}
 
