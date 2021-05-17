@@ -343,96 +343,124 @@ fstream& operator>>(fstream& file, trucks& obj)
 }
 class admin
 {
-	public:
+public:
 	void car();
 	void truck();
 	void bike();
-public:
 	admin()
 	{
 		trucks::read();
 		cars::read();
 		bikes::read();
 	}
-	
-	
 	void menu()
 	{
-
-		cout << "\t ADMIN CONSOLE." << endl;
-		cout << "\t****************" << endl << endl << endl << endl;
-		cout << "\t Please choose an admin operation." << endl;
-		cout << "\t 1. Modification in inventory." << endl;
-		cout << "\t 2. Modification in stock." << endl;
-		cout << "\t 3.Exit" << endl;
+		cout << "\tWELCOME TO SASUKE GARAGE" << endl;
+		cout << "\t*************************" << endl << endl << endl << endl;
+		cout << "\tPlease Choose any one:" << endl;
+		cout << "\t1.Customer." << endl;
+		cout << "\t2.Admin." << endl;
 		int a;
 		cin >> a;
-		system("CLS");
-		switch (a == 1)
-		{
+		switch (a)
+	{
 		case 1:
 		{
-			cout << "\t MODIFICATION IN INVENTORY." << endl;
-			cout << "\t****************************" << endl << endl << endl << endl;
-			cout << "\t 1. Modification in cars inventory." << endl;
-			cout << "\t 2. Modification in trucks inventory." << endl;
-			cout << "\t 3. Modification in Bikes inventory." << endl;
-			int a;
-			cin >> a;
+			cout << "CUSTOMER";
+			break;
+		}
+		case 2:
+		{
 			system("CLS");
-			switch (a == 1)
+			cout << "\tPlease Enter the password." << endl;
+			string a;
+			cin.ignore();
+			getline(cin, a);
+			system("CLS");
+			if (a == "tryhard")
 			{
-			case 1:
-			{	
-				car();
-			}
-			case 0:
-			{
-				switch (a == 2)
+
+				cout << "\t WELCOME BACK ADMIN." << endl;
+				cout << "\t*********************" << endl << endl << endl << endl;
+				cout << "1. Modification in vehicles features." << endl;
+				cout << "2. Change in vehicles." << endl;
+				cout << "3. Return to main menu." << endl;
+				int a;
+				cin >> a;
+				system("CLS");
+				switch (a)
 				{
 				case 1:
 				{
-					truck();
-				}
-				case 0:
-				{
-					switch (a == 3)
+					cout << "\t MODIFICATION IN VEHICLE FEATURES." << endl;
+					cout << "\t***********************************" << endl << endl << endl << endl;
+					cout << "\t 1. Modification in cars inventory." << endl;
+					cout << "\t 2. Modification in trucks inventory." << endl;
+					cout << "\t 3. Modification in Bikes inventory." << endl;
+					int a;
+					cin >> a;
+					system("CLS");
+					switch (a)
 					{
 					case 1:
+					{
+						car();
+					}
+					case 2:
+					{
+						truck();
+					}
+					case 3:
 					{
 						bike();
 					}
 					}
+
+				}
+				case 2:
+				{
+					// change in vehicles.
+				}
+				case 3:
+				{
+					menu();
 				}
 				}
+
 			}
-			}
-		}
-		case 0:
-		{
-			switch (a == 2)
+			else
 			{
-			case 1:
-			{
-				cout << "change stock";
-				cin.ignore();
-				cin.get();
-			}
-			case 0:
-			{
-				switch (a == 3)
+				system("CLS");
+				cout << "\tWrong password !" << endl;
+				cout << "\tDo you want to go back?" << endl;
+				cout << "\t1. Yes " << endl;
+				cout << "\t2. No" << endl;
+				int a;
+				cin >> a;
+				system("CLS");
+				switch (a)
 				{
 				case 1:
 				{
-					delete this;
+					menu();
+				}
+				case 0:
+				{
 					exit(0);
 				}
 				}
+
+
 			}
-			}
-		}
+
 		}
 	}
+	
+
+
+	}
+	
+
 	~admin()
 	{
 		trucks::write();
@@ -442,395 +470,394 @@ public:
 };
 void admin::car()
 {
-	//for car
-	cout << "\t MODIFICATION CARS IN INVENTORY." << endl;
-	cout << "\t*********************************" << endl << endl << endl << endl;
-	cout << "\t 1. Modify price" << endl;
-	cout << "\t 2. Modify color" << endl;
-	cout << "\t 3. Modify stock" << endl;
-	cout << "\t 4. Modify horsepower" << endl;
-	cout << "\t 5. Modify description" << endl;
-	cout << "\t 6. Modify name" << endl;
+	cars::list();
+	cout << endl;
 	int a;
+	cout << "Enter the serial number of car you want to modify?" << endl;
 	cin >> a;
 	system("CLS");
-	switch (a == 1)
+	while (a)
 	{
-	case 1:
-	{
-		int a;
-		cout << "Enter new price" << endl;
-		cin >> a;
-		for (int i = 0; i < c.size(); i++)
-		{
-			c[i].set_price(a);
-		}
+		cout << "\t MODIFICATION CAR FEATURES IN INVENTORY." << endl;
+		cout << "\t*********************************" << endl << endl << endl << endl;
+		cout << "\t 1. Modify price" << endl;
+		cout << "\t 2. Modify color" << endl;
+		cout << "\t 3. Modify stock" << endl;
+		cout << "\t 4. Modify horsepower" << endl;
+		cout << "\t 5. Modify description" << endl;
+		cout << "\t 6. Modify name" << endl;
+		int d;
+		cin >> d;
 		system("CLS");
-		menu();
-
-	}
-	case 0:
-	{
-		switch (a == 2)
+		switch (d)
 		{
 		case 1:
 		{
-			string a;
-			cout << "Enter new color" << endl;
-			cin >> a;
-			for (int i = 0; i < c.size(); i++)
+			cout << "Please Enter new price?";
+			float b;
+			cin >> b;
+			system("CLS");
+			try
 			{
-				c[i].set_color(a);
+				if (b < 0)
+					throw 1;
+			}
+			catch (int)
+			{
+				cout << "You entered wrong price" << endl;
+				cout << "return to main menu?" << endl;
+				cout << "1.Yes" << endl;
+				cout << "2.No" << endl;
+				int k;
+				cin >> k;
+				if (k == 1)
+				{
+					system("CLS");
+					menu();
+				}
+				else
+				{
+					exit(0);
+				}
+			}
+
+			for (int i = a - 1; i < a; i++)
+			{
+				c[i].set_price(b);
 			}
 			system("CLS");
 			menu();
 		}
-		case 0:
+		case 2:
 		{
-			switch (a == 3)
+			cout << "Please Enter new color?";
+			string b;
+			cin >> b;
+			for (int i = a - 1; i < a; i++)
 			{
-			case 1:
+				c[i].set_color(b);
+			}
+			system("CLS");
+			menu();
+		}
+		case 3:
+		{
+			cout << "Please Enter new stock?";
+			int b;
+			cin >> b;
+			for (int i = a - 1; i < a; i++)
 			{
-				int a;
-				cout << "Enter new stock" << endl;
-				cin >> a;
-				for (int i = 0; i < c.size(); i++)
-				{
-					c[i].set_stock(a);
-				}
-				system("CLS");
-				menu();
+				c[i].set_stock(b);
 			}
-			case 0:
+			system("CLS");
+			menu();
+		}
+		case 4:
+		{
+			cout << "Please Enter new horse power?";
+			int b;
+			cin >> b;
+			for (int i = a - 1; i < a; i++)
 			{
-				switch (a == 4)
-				{
-				case 1:
-				{
-					int a;
-					cout << "Enter new horse power" << endl;
-					cin >> a;
-					for (int i = 0; i < c.size(); i++)
-					{
-						c[i].set_horsepower(a);
-					}
-					system("CLS");
-					menu();
-				}
-				case 0:
-				{
-					switch (a == 5)
-					{
-					case 1:
-					{
-						string a;
-						cout << "Enter new description" << endl;
-						cin.ignore();
-						getline(cin, a);
-						for (int i = 0; i < c.size(); i++)
-						{
-							c[i].set_description(a);
-						}
-						system("CLS");
-						menu();
-					}
-					case 0:
-					{
-						switch (a == 6)
-						{
-						case 1:
-						{
-							string a;
-							cout << "Enter new name" << endl;
-							cin.ignore();
-							getline(cin, a);
-							for (int i = 0; i < c.size(); i++)
-							{
-								c[i].set_name(a);
-							}
-							system("CLS");
-							menu();
-						}
-						case 0:
-						{
-							system("CLS");
-							menu();
-						}
-						}
-					}
-					}
-				}
-				}
-
+				c[i].set_horsepower(b);
 			}
+			system("CLS");
+			menu();
+		}
+		case 5:
+		{
+			cout << "Please Enter new description?";
+			string b;
+			cin.ignore();
+			getline(cin, b);
+			for (int i = a - 1; i < a; i++)
+			{
+				c[i].set_description(b);
 			}
+			system("CLS");
+			menu();
+		}
+		case 6:
+		{
+			cout << "Please Enter new name?";
+			string b;
+			cin.ignore();
+			getline(cin, b);
+			for (int i = a - 1; i < a; i++)
+			{
+				c[i].set_name(b);
+			}
+			system("CLS");
+			menu();
+		}
+		case 7:
+		{
+			menu();
 		}
 		}
-	}
 	}
 }
 void admin::truck()
 {
-	//for truck
-	cout << "\t MODIFICATION IN TRUCKS INVENTORY." << endl;
-	cout << "\t************************************" << endl << endl << endl << endl;
-	cout << "\t 1. Modify price" << endl;
-	cout << "\t 2. Modify color" << endl;
-	cout << "\t 3. Modify stock" << endl;
-	cout << "\t 4. Modify horsepower" << endl;
-	cout << "\t 5. Modify description" << endl;
-	cout << "\t 6. Modify name" << endl;
+	trucks::list();
+	cout << endl;
 	int a;
+	cout << "Enter the serial number of car you want to modify?" << endl;
 	cin >> a;
-	system("CLS");
-	switch (a == 1)
+	while (a)
 	{
-	case 1:
-	{
-		int a;
-		cout << "Enter new price" << endl;
-		cin >> a;
-		for (int i = 0; i < t.size(); i++)
-		{
-			t[i].set_price(a);
-		}
+		cout << "\t MODIFICATION OF TRUCK FEATURES IN INVENTORY." << endl;
+		cout << "\t*********************************" << endl << endl << endl << endl;
+		cout << "\t 1. Modify price" << endl;
+		cout << "\t 2. Modify color" << endl;
+		cout << "\t 3. Modify stock" << endl;
+		cout << "\t 4. Modify horsepower" << endl;
+		cout << "\t 5. Modify description" << endl;
+		cout << "\t 6. Modify name" << endl;
+		int d;
+		cin >> d;
 		system("CLS");
-		menu();
-	}
-	case 0:
-	{
-		switch (a == 2)
+		switch (d)
 		{
 		case 1:
 		{
-			string a;
-			cout << "Enter new color" << endl;
-			cin >> a;
-			for (int i = 0; i < t.size(); i++)
+			cout << "Please Enter new price?";
+			float b;
+			cin >> b;
+			system("CLS");
+			try
 			{
-				t[i].set_color(a);
+				if (b < 0)
+					throw 1;
+			}
+			catch (int)
+			{
+				cout << "You entered wrong price" << endl;
+				cout << "return to main menu?" << endl;
+				cout << "1.Yes" << endl;
+				cout << "2.No" << endl;
+				int k;
+				cin >> k;
+					if (k == 1)
+					{
+						system("CLS");
+						menu();
+
+					}
+					else
+					{
+						exit(0);
+					}
+
+			}
+			for (int i = a - 1; i < a; i++)
+			{
+				t[i].set_price(b);
 			}
 			system("CLS");
 			menu();
 		}
-		case 0:
+		case 2:
 		{
-			switch (a == 3)
+			cout << "Please Enter new color?";
+			string b;
+			cin >> b;
+			for (int i = a - 1; i < a; i++)
 			{
-			case 1:
+				t[i].set_color(b);
+			}
+			system("CLS");
+			menu();
+		}
+		case 3:
+		{
+			cout << "Please Enter new stock?";
+			int b;
+			cin >> b;
+			for (int i = a - 1; i < a; i++)
 			{
-				int a;
-				cout << "Enter new stock" << endl;
-				cin >> a;
-				for (int i = 0; i < t.size(); i++)
-				{
-					t[i].set_stock(a);
-				}
-				system("CLS");
-				menu();
+				t[i].set_stock(b);
 			}
-			case 0:
+			system("CLS");
+			menu();
+		}
+		case 4:
+		{
+			cout << "Please Enter new horse power?";
+			int b;
+			cin >> b;
+			for (int i = a - 1; i < a; i++)
 			{
-				switch (a == 4)
-				{
-				case 1:
-				{
-					int a;
-					cout << "Enter new horse power" << endl;
-					cin >> a;
-					for (int i = 0; i < t.size(); i++)
-					{
-						t[i].set_horsepower(a);
-					}
-					system("CLS");
-					menu();
-				}
-				case 0:
-				{
-					switch (a == 5)
-					{
-					case 1:
-					{
-						string a;
-						cout << "Enter new description" << endl;
-						cin.ignore();
-						getline(cin, a);
-						for (int i = 0; i < t.size(); i++)
-						{
-							t[i].set_description(a);
-						}
-						system("CLS");
-						menu();
-					}
-					case 0:
-					{
-						switch (a == 6)
-						{
-						case 1:
-						{
-							string a;
-							cout << "Enter new name" << endl;
-							cin.ignore();
-							getline(cin, a);
-							for (int i = 0; i < t.size(); i++)
-							{
-								t[i].set_name(a);
-							}
-							system("CLS");
-							menu();
-						}
-						case 0:
-						{
-							system("CLS");
-							menu();
-						}
-						}
-					}
-					}
-				}
-				}
+				t[i].set_horsepower(b);
 			}
+			system("CLS");
+			menu();
+		}
+		case 5:
+		{
+			cout << "Please Enter new description?";
+			string b;
+			cin.ignore();
+			getline(cin, b);
+			for (int i = a - 1; i < a; i++)
+			{
+				t[i].set_description(b);
 			}
+			system("CLS");
+			menu();
+		}
+		case 6:
+		{
+			cout << "Please Enter new name?";
+			string b;
+			cin.ignore();
+			getline(cin, b);
+			for (int i = a - 1; i < a; i++)
+			{
+				t[i].set_name(b);
+			}
+			system("CLS");
+			menu();
+		}
+		case 7:
+		{
+			menu();
 		}
 		}
-	}
 	}
 }
 void admin::bike()
 {
-	//for bike
-	cout << "\t MODIFICATION IN	BIKES INVENTORY." << endl;
-	cout << "\t**********************************" << endl << endl << endl << endl;
-	cout << "\t 1. Modify price" << endl;
-	cout << "\t 2. Modify color" << endl;
-	cout << "\t 3. Modify stock" << endl;
-	cout << "\t 4. Modify horsepower" << endl;
-	cout << "\t 5. Modify description" << endl;
-	cout << "\t 6. Modify name" << endl;
+	bikes::list();
+	cout << endl;
 	int a;
+	cout << "Enter the serial number of car you want to modify?" << endl;
 	cin >> a;
-	system("CLS");
-	switch (a == 1)
+	while (a)
 	{
-	case 1: //for price
-	{
-		bikes::list();
-		cout << "\nEnter the S.No of the vheicle you want to change: ";
-		int a;
-		cin >> a;
-		a--;
-		double x;
-		cout << "\n\nEnter the new Price: ";
-		cin >> x;
-		b[a].set_price(x);
-		cout << "\n\nPrice Updated successfully.\n\nPress any key to return to menu.";
-		cin.ignore();
-		cin.get();
+		cout << "\t MODIFICATION OF BIKE FEATURES IN INVENTORY." << endl;
+		cout << "\t**********************************************" << endl << endl << endl << endl;
+		cout << "\t 1. Modify price" << endl;
+		cout << "\t 2. Modify color" << endl;
+		cout << "\t 3. Modify stock" << endl;
+		cout << "\t 4. Modify horsepower" << endl;
+		cout << "\t 5. Modify description" << endl;
+		cout << "\t 6. Modify name" << endl;
+		int d;
+		cin >> d;
 		system("CLS");
-		menu();
-	}
-	case 0:
-	{
-		switch (a == 2)
+		switch (d)
 		{
 		case 1:
 		{
-			string a;
-			cout << "Enter new color" << endl;
-			cin >> a;
-			for (int i = 0; i < b.size(); i++)
+			cout << "Please Enter new price?";
+			float x;
+			cin >> x;
+			system("CLS");
+			try
 			{
-				b[i].set_color(a);
+				if (x < 0)
+					throw 1;
+			}
+			catch (int)
+			{
+				cout << "You entered wrong price" << endl;
+				cout << "return to main menu?" << endl;
+				cout << "1.Yes" << endl;
+				cout << "2.No" << endl;
+				int k;
+				cin >> k;
+				if (k == 1)
+				{
+					system("CLS");
+					menu();
+				}
+				else
+				{
+					exit(0);
+				}
+
+			}
+			for (int i = a - 1; i < a; i++)
+			{
+				b[i].set_price(x);
 			}
 			system("CLS");
 			menu();
 		}
-		case 0:
+		case 2:
 		{
-			switch (a == 3)
+			cout << "Please Enter new color?";
+			string x;
+			cin >> x;
+			for (int i = a - 1; i < a; i++)
 			{
-			case 1:
+				b[i].set_color(x);
+			}
+			system("CLS");
+			menu();
+		}
+		case 3:
+		{
+			cout << "Please Enter new stock?";
+			int x;
+			cin >> x;
+			for (int i = a - 1; i < a; i++)
 			{
-				int a;
-				cout << "Enter new stock" << endl;
-				cin >> a;
-				for (int i = 0; i < b.size(); i++)
-				{
-					b[i].set_stock(a);
-				}
-				system("CLS");
-				menu();
+				b[i].set_stock(x);
 			}
-			case 0:
+			system("CLS");
+			menu();
+		}
+		case 4:
+		{
+			cout << "Please Enter new horse power?";
+			int x;
+			cin >> x;
+			for (int i = a - 1; i < a; i++)
 			{
-				switch (a == 4)
-				{
-				case 1:
-				{
-					int a;
-					cout << "Enter new horse power" << endl;
-					cin >> a;
-					for (int i = 0; i < b.size(); i++)
-					{
-						b[i].set_horsepower(a);
-					}
-					system("CLS");
-					menu();
-				}
-				case 0:
-				{
-					switch (a == 5)
-					{
-					case 1:
-					{
-						string a;
-						cout << "Enter new description" << endl;
-						cin.ignore();
-						getline(cin, a);
-						for (int i = 0; i < b.size(); i++)
-						{
-							b[i].set_description(a);
-						}
-						system("CLS");
-						menu();
-					}
-					case 0:
-					{
-						switch (a == 6)
-						{
-						case 1:
-						{
-							string a;
-							cout << "Enter new name" << endl;
-							cin.ignore();
-							getline(cin, a);
-							for (int i = 0; i < b.size(); i++)
-							{
-								b[i].set_name(a);
-							}
-							system("CLS");
-							menu();
-						}
-						case 0:
-						{
-							system("CLS");
-							menu();
-						}
-						}
-					}
-					}
-				}
-				}
+				b[i].set_horsepower(x);
 			}
+			system("CLS");
+			menu();
+		}
+		case 5:
+		{
+			cout << "Please Enter new description?";
+			string x;
+			cin.ignore();
+			getline(cin, x);
+			for (int i = a - 1; i < a; i++)
+			{
+				b[i].set_description(x);
 			}
+			system("CLS");
+			menu();
+		}
+		case 6:
+		{
+			cout << "Please Enter new name?";
+			string x;
+			cin.ignore();
+			getline(cin, x);
+			for (int i = a - 1; i < a; i++)
+			{
+				b[i].set_name(x);
+			}
+			system("CLS");
+			menu();
+		}
+		case 7:
+		{
+			menu();
 		}
 		}
-	}
 	}
 }
+
 int main()
 	{
-		admin* obj=new admin();
-		obj->menu();
+	admin obj;
+	obj.menu();
 	}
-	//pohoncho lamao nub
+	//pohoncho lamao nub H3h3
