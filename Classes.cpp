@@ -359,28 +359,6 @@ public:
 	}
 	void menu()
 	{
-		cout << "\tWELCOME TO SASUKE GARAGE" << endl;
-		cout << "\t*************************" << endl << endl << endl << endl;
-		cout << "\tPlease Choose any one:" << endl;
-		cout << "\t1.Customer." << endl;
-		cout << "\t2.Admin." << endl;
-		cout << "\t3.Exit." << endl;
-		int a;
-		cin >> a;
-		switch (a)
-		{
-		case 3:
-		{
-			delete this;
-			exit(0);
-		}
-		case 1:
-		{
-			cout << "CUSTOMER";
-			break;
-		}
-		case 2:
-		{
 			system("CLS");
 			cout << "\tPlease Enter the password." << endl;
 			string s;
@@ -388,7 +366,7 @@ public:
 			getline(cin, s);
 			system("CLS");
 			if (s == "tryhard")
-			{
+			{	
 				cout << "\t WELCOME BACK ADMIN." << endl;
 				cout << "\t*********************" << endl << endl << endl << endl;
 				cout << "\t1. Modification in vehicles features." << endl;
@@ -459,12 +437,7 @@ public:
 				}
 				}
 			}
-		}
-
-		}
-
 	}
-
 	~admin()
 	{
 		trucks::write();
@@ -472,6 +445,7 @@ public:
 		bikes::write();
 	}
 };
+
 void admin::car()
 {
 	cars::list();
@@ -608,6 +582,7 @@ void admin::truck()
 	int a;
 	cout << "Enter the serial number of car you want to modify?" << endl;
 	cin >> a;
+	system("CLS");
 	while (a)
 	{
 		cout << "\t MODIFICATION OF TRUCK FEATURES IN INVENTORY." << endl;
@@ -737,6 +712,7 @@ void admin::bike()
 	int a;
 	cout << "Enter the serial number of car you want to modify?" << endl;
 	cin >> a;
+	system("CLS");
 	while (a)
 	{
 		cout << "\t MODIFICATION OF BIKE FEATURES IN INVENTORY." << endl;
@@ -861,7 +837,35 @@ void admin::bike()
 
 int main()
 {
-	admin* obj = new admin();;
+	admin obj;
+	cout << "\tWELCOME TO SASUKE GARAGE" << endl;
+	cout << "\t*************************" << endl << endl << endl << endl;
+	cout << "\tPlease Choose any one:" << endl;
+	cout << "\t1.Customer." << endl;
+	cout << "\t2.Admin." << endl;
+	cout << "\t3.Exit." << endl;
+	int a;
+	cin >> a;
+	switch (a)
+	{
+	case 1:
+	{
+		cout << "CUSTOMER";
+		break;
+	}
+	case 2:
+	{
+		obj.menu();
+	}
+	case 3:
+	{
+	
+		exit(0);
+	}
+
+	}
+
+	/*admin* obj = new admin();;
 	obj->menu();
 	/*trucks::read();
 	trucks obj;
@@ -869,4 +873,5 @@ int main()
 	t.push_back(obj);
 	trucks::write();*/
 }
+	
 //pohoncho lamao nub H3h3
