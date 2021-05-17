@@ -1,4 +1,5 @@
 #include"allheaders.h"
+#include<conio.h>
 
 vector<bikes> b;
 vector<cars> c;
@@ -373,30 +374,17 @@ public:
 		{
 			system("CLS");
 			cout << "\tPlease Enter the password." << endl;
-			string a;
-			cin.ignore();
-			getline(cin, a);
+			string s;
+			cin. ignore();
+			getline(cin, s);
 			system("CLS");
-			if (a == "tryhard")
+			if (s == "tryhard")
 			{
-
-				cout << "\t WELCOME BACK ADMIN." << endl;
-				cout << "\t*********************" << endl << endl << endl << endl;
-				cout << "\t1. Modification in vehicles features." << endl;
-				cout << "\t2. Change in vehicles." << endl;
-				cout << "\t3. Return to main menu." << endl;
-				int a;
-				cin >> a;
-				system("CLS");
-				switch (a)
-				{
-				case 1:
-				{
-					cout << "\t MODIFICATION IN VEHICLE FEATURES." << endl;
-					cout << "\t***********************************" << endl << endl << endl << endl;
-					cout << "\t 1. Modification in cars inventory." << endl;
-					cout << "\t 2. Modification in trucks inventory." << endl;
-					cout << "\t 3. Modification in Bikes inventory." << endl;
+					cout << "\t WELCOME BACK ADMIN." << endl;
+					cout << "\t*********************" << endl << endl << endl << endl;
+					cout << "\t1. Modification in vehicles features." << endl;
+					cout << "\t2. Change in vehicles." << endl;
+					cout << "\t3. Return to main menu." << endl;
 					int a;
 					cin >> a;
 					system("CLS");
@@ -404,64 +392,71 @@ public:
 					{
 					case 1:
 					{
-						car();
+						cout << "\t MODIFICATION IN VEHICLE FEATURES." << endl;
+						cout << "\t***********************************" << endl << endl << endl << endl;
+						cout << "\t 1. Modification in cars inventory." << endl;
+						cout << "\t 2. Modification in trucks inventory." << endl;
+						cout << "\t 3. Modification in Bikes inventory." << endl;
+						int a;
+						cin >> a;
+						system("CLS");
+						switch (a)
+						{
+						case 1:
+						{
+							car();
+						}
+						case 2:
+						{
+							truck();
+						}
+						case 3:
+						{
+							bike();
+						}
+						}
+
 					}
 					case 2:
 					{
-						truck();
+						// change in vehicles.
 					}
 					case 3:
 					{
-						bike();
+						menu();
 					}
 					}
 
 				}
-				case 2:
+				else
 				{
-					// change in vehicles.
-				}
-				case 3:
-				{
-					menu();
-				}
-				}
-
-			}
-			else
-			{
-				system("CLS");
-				cout << "\tWrong password !" << endl;
-				cout << "\tDo you want to go back?" << endl;
-				cout << "\t1. Yes " << endl;
-				cout << "\t2. No" << endl;
-				int a;
-				cin >> a;
-				system("CLS");
-				switch (a)
-				{
-				case 1:
-				{
-					menu();
-				}
-				case 0:
-				{
-					exit(0);
-				}
-				}
-
-
-			}
-
-		}
+					system("CLS");
+					cout << "\tWrong password !" << endl;
+					cout << "\tDo you want to go back?" << endl;
+					cout << "\t1. Yes " << endl;
+					cout << "\t2. No" << endl;
+					int a;
+					cin >> a;
+					system("CLS");
+					switch (a)
+					{
+					case 1:
+					{
+						menu();
+					}
+					case 0:
+					{
+						exit(0);
+					}
+					}
+}
 	}
 	
-
+	}
 
 	}
 	
-
-	~admin()
+~admin()
 	{
 		trucks::write();
 		cars::write();
