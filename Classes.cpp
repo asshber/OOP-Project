@@ -606,7 +606,7 @@ void admin::truck()
 	trucks::list();
 	cout << endl;
 	int a;
-	cout << "Enter the serial number of car you want to modify?" << endl;
+	cout << "Enter the serial number of truck you want to modify?" << endl;
 	cin >> a;
 	while (a)
 	{
@@ -735,7 +735,7 @@ void admin::bike()
 	bikes::list();
 	cout << endl;
 	int a;
-	cout << "Enter the serial number of car you want to modify?" << endl;
+	cout << "Enter the serial number of bike you want to modify?" << endl;
 	cin >> a;
 	while (a)
 	{
