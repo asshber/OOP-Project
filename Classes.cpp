@@ -111,7 +111,7 @@ public:
 };
 fstream& operator<<(fstream& file, bikes& obj)
 {
-	file << ' ' << obj.get_name() << ';' << obj.get_color() << ' ' << obj.get_stock() <<' '<<obj.get_price()<< ' ' << obj.get_horsepower() << ' ' << obj.get_description() << ';'<<' ';
+	file << ' ' << obj.get_name() << ';' << obj.get_color() << ' ' << obj.get_stock() <<' '<<obj.get_price()<< ' ' << obj.get_horsepower() << ' ' << obj.get_description() << ';';
 	return file;
 }
 fstream& operator>>(fstream& file, bikes& obj)
@@ -136,7 +136,6 @@ fstream& operator>>(fstream& file, bikes& obj)
 	file.get();
 	getline(file, x, ';');
 	obj.set_description(x);
-	file.get();
 	return file;
 }
 class cars :public vehicles
@@ -239,7 +238,6 @@ fstream& operator>>(fstream& file, cars& obj)
 	obj.set_description(x);
 	file >> x;
 	obj.set_transmission(x);
-	file.get();
 	return file;
 }
 class trucks : public vehicles
@@ -342,7 +340,6 @@ fstream& operator>>(fstream& file, trucks& obj)
 	obj.set_description(x);
 	file >> y;
 	obj.set_loading_capacity(y);
-	file.get();
 	return file;
 }
 class admin
@@ -364,16 +361,10 @@ public:
 		cout << "\tPlease Choose any one:" << endl;
 		cout << "\t1.Customer." << endl;
 		cout << "\t2.Admin." << endl;
-		cout << "\t3.Exit." << endl;
 		int a;
 		cin >> a;
 		switch (a)
 	{
-		case 3:
-		{
-			delete this;
-			exit(0);
-		}
 		case 1:
 		{
 			cout << "CUSTOMER";
@@ -861,7 +852,7 @@ void admin::bike()
 
 int main()
 	{
-	admin* obj = new admin();;
-	obj->menu();
+	admin obj;
+	obj.menu();
 	}
 	//pohoncho lamao nub H3h3
