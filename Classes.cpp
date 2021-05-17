@@ -111,7 +111,7 @@ public:
 };
 fstream& operator<<(fstream& file, bikes& obj)
 {
-	file << ' ' << obj.get_name() << ';' << obj.get_color() << ' ' << obj.get_stock() <<' '<<obj.get_price()<< ' ' << obj.get_horsepower() << ' ' << obj.get_description() << ';';
+	file << ' ' << obj.get_name() << ';' << obj.get_color() << ' ' << obj.get_stock() << ' ' << obj.get_price() << ' ' << obj.get_horsepower() << ' ' << obj.get_description() << ';' << ' ';
 	return file;
 }
 fstream& operator>>(fstream& file, bikes& obj)
@@ -120,7 +120,7 @@ fstream& operator>>(fstream& file, bikes& obj)
 	int y;
 	double z;
 	file.get();
-	getline(file, x,';');
+	getline(file, x, ';');
 	obj.set_name(x);
 	file >> x;
 	obj.set_color(x);
@@ -136,6 +136,7 @@ fstream& operator>>(fstream& file, bikes& obj)
 	file.get();
 	getline(file, x, ';');
 	obj.set_description(x);
+	file.get();
 	return file;
 }
 class cars :public vehicles
@@ -238,6 +239,7 @@ fstream& operator>>(fstream& file, cars& obj)
 	obj.set_description(x);
 	file >> x;
 	obj.set_transmission(x);
+	file.get();
 	return file;
 }
 class trucks : public vehicles
@@ -340,6 +342,7 @@ fstream& operator>>(fstream& file, trucks& obj)
 	obj.set_description(x);
 	file >> y;
 	obj.set_loading_capacity(y);
+	file.get();
 	return file;
 }
 class admin
@@ -361,10 +364,16 @@ public:
 		cout << "\tPlease Choose any one:" << endl;
 		cout << "\t1.Customer." << endl;
 		cout << "\t2.Admin." << endl;
+		cout << "\t3.Exit." << endl;
 		int a;
 		cin >> a;
 		switch (a)
-	{
+		{
+		case 3:
+		{
+			delete this;
+			exit(0);
+		}
 		case 1:
 		{
 			cout << "CUSTOMER";
@@ -375,16 +384,28 @@ public:
 			system("CLS");
 			cout << "\tPlease Enter the password." << endl;
 			string s;
-			cin. ignore();
+			cin.ignore();
 			getline(cin, s);
 			system("CLS");
 			if (s == "tryhard")
 			{
-					cout << "\t WELCOME BACK ADMIN." << endl;
-					cout << "\t*********************" << endl << endl << endl << endl;
-					cout << "\t1. Modification in vehicles features." << endl;
-					cout << "\t2. Change in vehicles." << endl;
-					cout << "\t3. Return to main menu." << endl;
+				cout << "\t WELCOME BACK ADMIN." << endl;
+				cout << "\t*********************" << endl << endl << endl << endl;
+				cout << "\t1. Modification in vehicles features." << endl;
+				cout << "\t2. Change in vehicles." << endl;
+				cout << "\t3. Return to main menu." << endl;
+				int a;
+				cin >> a;
+				system("CLS");
+				switch (a)
+				{
+				case 1:
+				{
+					cout << "\t MODIFICATION IN VEHICLE FEATURES." << endl;
+					cout << "\t***********************************" << endl << endl << endl << endl;
+					cout << "\t 1. Modification in cars inventory." << endl;
+					cout << "\t 2. Modification in trucks inventory." << endl;
+					cout << "\t 3. Modification in Bikes inventory." << endl;
 					int a;
 					cin >> a;
 					system("CLS");
@@ -392,71 +413,59 @@ public:
 					{
 					case 1:
 					{
-						cout << "\t MODIFICATION IN VEHICLE FEATURES." << endl;
-						cout << "\t***********************************" << endl << endl << endl << endl;
-						cout << "\t 1. Modification in cars inventory." << endl;
-						cout << "\t 2. Modification in trucks inventory." << endl;
-						cout << "\t 3. Modification in Bikes inventory." << endl;
-						int a;
-						cin >> a;
-						system("CLS");
-						switch (a)
-						{
-						case 1:
-						{
-							car();
-						}
-						case 2:
-						{
-							truck();
-						}
-						case 3:
-						{
-							bike();
-						}
-						}
-
+						car();
 					}
 					case 2:
 					{
-						// change in vehicles.
+						truck();
 					}
 					case 3:
 					{
-						menu();
+						bike();
 					}
 					}
 
 				}
-				else
+				case 2:
 				{
-					system("CLS");
-					cout << "\tWrong password !" << endl;
-					cout << "\tDo you want to go back?" << endl;
-					cout << "\t1. Yes " << endl;
-					cout << "\t2. No" << endl;
-					int a;
-					cin >> a;
-					system("CLS");
-					switch (a)
-					{
-					case 1:
-					{
-						menu();
-					}
-					case 0:
-					{
-						exit(0);
-					}
-					}
-}
-	}
-	
-	}
+					// change in vehicles.
+				}
+				case 3:
+				{
+					menu();
+				}
+				}
+
+			}
+			else
+			{
+				system("CLS");
+				cout << "\tWrong password !" << endl;
+				cout << "\tDo you want to go back?" << endl;
+				cout << "\t1. Yes " << endl;
+				cout << "\t2. No" << endl;
+				int a;
+				cin >> a;
+				system("CLS");
+				switch (a)
+				{
+				case 1:
+				{
+					menu();
+				}
+				case 0:
+				{
+					exit(0);
+				}
+				}
+			}
+		}
+
+		}
 
 	}
-	
-~admin()
+
+	~admin()
 	{
 		trucks::write();
 		cars::write();
@@ -597,7 +606,7 @@ void admin::truck()
 	trucks::list();
 	cout << endl;
 	int a;
-	cout << "Enter the serial number of truck you want to modify?" << endl;
+	cout << "Enter the serial number of car you want to modify?" << endl;
 	cin >> a;
 	while (a)
 	{
@@ -633,16 +642,16 @@ void admin::truck()
 				cout << "2.No" << endl;
 				int k;
 				cin >> k;
-					if (k == 1)
-					{
-						system("CLS");
-						menu();
+				if (k == 1)
+				{
+					system("CLS");
+					menu();
 
-					}
-					else
-					{
-						exit(0);
-					}
+				}
+				else
+				{
+					exit(0);
+				}
 
 			}
 			for (int i = a - 1; i < a; i++)
@@ -726,7 +735,7 @@ void admin::bike()
 	bikes::list();
 	cout << endl;
 	int a;
-	cout << "Enter the serial number of bike you want to modify?" << endl;
+	cout << "Enter the serial number of car you want to modify?" << endl;
 	cin >> a;
 	while (a)
 	{
@@ -851,8 +860,13 @@ void admin::bike()
 }
 
 int main()
-	{
-	admin obj;
-	obj.menu();
-	}
-	//pohoncho lamao nub H3h3
+{
+	admin* obj = new admin();;
+	obj->menu();
+	/*trucks::read();
+	trucks obj;
+	obj.getdata();
+	t.push_back(obj);
+	trucks::write();*/
+}
+//pohoncho lamao nub H3h3
