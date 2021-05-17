@@ -382,9 +382,9 @@ public:
 
 				cout << "\t WELCOME BACK ADMIN." << endl;
 				cout << "\t*********************" << endl << endl << endl << endl;
-				cout << "1. Modification in vehicles features." << endl;
-				cout << "2. Change in vehicles." << endl;
-				cout << "3. Return to main menu." << endl;
+				cout << "\t1. Modification in vehicles features." << endl;
+				cout << "\t2. Change in vehicles." << endl;
+				cout << "\t3. Return to main menu." << endl;
 				int a;
 				cin >> a;
 				system("CLS");
