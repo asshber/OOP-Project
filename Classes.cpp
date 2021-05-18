@@ -59,7 +59,7 @@ public:
 		string x;
 		int y;
 		double z;
-		//cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		cout << "\nEnter the Name of Bike: ";
 		getline(cin, x);
 		set_name(x);
@@ -147,7 +147,7 @@ public:
 		string x;
 		int y;
 		double z;
-		//cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		cout << "\nEnter the Name of Car: ";
 		getline(cin, x);
 		set_name(x);
@@ -250,7 +250,7 @@ public:
 		string x;
 		int y;
 		double z;
-		//cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		cout << "\nEnter the Name of Truck: ";
 		getline(cin, x);
 		set_name(x);
@@ -344,6 +344,52 @@ fstream& operator>>(fstream& file, trucks& obj)
 	file.get();
 	return file;
 }
+class customer {
+	string customer_name;
+	long int contact_num, CNIC,credit_card;
+	bool Filer;
+	int pin;
+public:
+	void set_customerNmae(string c) {
+		customer_name = c;
+	}
+	void set_contact(long int con) {
+		contact_num = con;
+	}
+	void set_CNIC(long int n) {
+		CNIC = n;
+	}
+	void set_CREDIT_card(long int r) {
+		credit_card = r;
+	}
+	void set_Filer(bool f) {
+		Filer = f;
+	}
+	void set_pin(int p) {
+		pin = p;
+	}
+	string get_customerName() {
+		return customer_name;
+	}
+	long int get_contact() {
+		return contact_num;
+	}
+	long int get_CNIC() {
+		return CNIC;
+	}
+	long int get_CREDIT_card() {
+		return credit_card;
+	}
+	bool get_Filer() {
+		return Filer;
+	}
+	int get_pin() {
+		return pin;
+	}
+	//pending cutomer details
+	//#phoncho :D
+
+};
 class admin
 {
 public:
@@ -408,7 +454,41 @@ public:
 				}
 				case 2:
 				{
-					// change in vehicles.
+					{
+						cout << "\t CHANGE IN VEHICLE." << endl;
+						cout << "\t******************" << endl << endl << endl << endl;
+						cout << "\t 1. Addition in cars inventory." << endl;
+						cout << "\t 2. Addition in trucks inventory." << endl;
+						cout << "\t 3. Addition in Bikes inventory." << endl;
+						int s;
+						cin >> s;
+						system("CLS");
+						switch (s)
+						{
+						case 1: {
+							cars obj;
+							obj.getdata();
+							c.push_back(obj);
+							break;
+						}
+						case 2: {
+							trucks obj;
+							obj.getdata();
+							t.push_back(obj);
+							break;
+						}
+						case 3: {
+							bikes obj;
+							obj.getdata();
+							b.push_back(obj);
+							break;
+						}
+						case 4: {
+							menu();
+						}
+						}
+
+					}
 				}
 				case 3:
 				{
