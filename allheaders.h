@@ -3,6 +3,7 @@
 #include<string>
 #include<vector>
 #include<fstream>
+#include<conio.h>
 using namespace std;
 //All Declarations
 class vehicles;
@@ -19,3 +20,4 @@ fstream& operator<<(fstream& file, cars& obj);
 fstream& operator>>(fstream& file, cars& obj);
 fstream& operator<<(fstream& file, trucks& obj);
 fstream& operator>>(fstream& file, trucks& obj);
+ostream& operator<<(ostream& dout, vehicles& obj);

@@ -1,5 +1,4 @@
 #include"allheaders.h"
-#include<conio.h>
 
 vector<bikes> b;
 vector<cars> c;
@@ -362,7 +361,7 @@ public:
 			system("CLS");
 			cout << "\tPlease Enter the password." << endl;
 			string s;
-			cin.ignore();
+			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 			getline(cin, s);
 			system("CLS");
 			if (s == "tryhard")
@@ -371,7 +370,10 @@ public:
 				cout << "\t*********************" << endl << endl << endl << endl;
 				cout << "\t1. Modification in vehicles features." << endl;
 				cout << "\t2. Change in vehicles." << endl;
-				cout << "\t3. Return to main menu." << endl;
+				cout << "\t3. View All Vehicles.\n";
+				cout << "\t4. Delete a Vehicle.\n";
+				cout << "\t5. Return to main menu." << endl;
+				cout << "\t6. Exit.\n";
 				int a;
 				cin >> a;
 				system("CLS");
@@ -410,8 +412,106 @@ public:
 				}
 				case 3:
 				{
+					cout << "\t WELCOME BACK ADMIN." << endl;
+					cout << "\t*********************" << endl << endl << endl << endl;
+					cout << "\t1. View All Bikes" << endl;
+					cout << "\t2. View All Cars" << endl;
+					cout << "\t3. View All Trucks\n";
+					cout << "\t4. Exit" << endl;
+					int a;
+					cin >> a;
+					switch (a)
+					{
+					case 1:
+						system("cls");
+						cout << "\t WELCOME BACK ADMIN." << endl;
+						cout << "\t*********************" << endl << endl << endl << endl;
+						cout << "\nS.No\tName\t\tStock\n\n";
+						for (int i = 0; i < b.size(); i++)
+						{
+							cout << i + 1 << b[i];
+						}
+						break;
+					case 2:
+						system("cls");
+						cout << "\t WELCOME BACK ADMIN." << endl;
+						cout << "\t*********************" << endl << endl << endl << endl;
+						cout << "\nS.No\tName\t\tStock\n\n";
+						for (int i = 0; i < c.size(); i++)
+						{
+							cout << i + 1 << c[i];
+						}
+						break;
+					case 3:
+						system("cls");
+						cout << "\t WELCOME BACK ADMIN." << endl;
+						cout << "\t*********************" << endl << endl << endl << endl;
+						cout << "\nS.No\tName\t\tStock\n\n";
+						for (int i = 0; i < t.size(); i++)
+						{
+							cout << i + 1 << t[i];
+						}
+						break;
+					default:
+						cout << "\nYou Entered and Invalid choice\n\nPress any key to Exit.";
+						cin.ignore();
+						cin.get();
+						delete this;
+						exit(0);
+						break;
+					}
+					cout << "\n\nPress any key to return to main menu.";
+					cin.ignore();
+					cin.get();
 					menu();
 				}
+				case 4:
+					cout << "\t WELCOME BACK ADMIN." << endl;
+					cout << "\t*********************" << endl << endl << endl << endl;
+					cout << "\t1. Delete a Bike" << endl;
+					cout << "\t2. Delete a Car" << endl;
+					cout << "\t3. Delete a Truck\n";
+					cout << "\t4. Exit" << endl;
+					int a;
+					cin >> a;
+					switch (a)
+					{
+						case 1:
+							cout << "\t WELCOME BACK ADMIN." << endl;
+							cout << "\t*********************" << endl << endl << endl << endl;
+							bikes::list();
+							cout << "\n\nEnter the S.No of the bike you want to delete: ";
+							cin >> a;
+							a--;
+							b.erase(b.begin() + a);
+							break;
+						case 2:
+							cout << "\t WELCOME BACK ADMIN." << endl;
+							cout << "\t*********************" << endl << endl << endl << endl;
+							cars::list();
+							cout << "\n\nEnter the S.No of the Car you want to delete: ";
+							cin >> a;
+							a--;
+							c.erase(c.begin() + a);
+							break;
+						case 3:
+							cout << "\t WELCOME BACK ADMIN." << endl;
+							cout << "\t*********************" << endl << endl << endl << endl;
+							trucks::list();
+							cout << "\n\nEnter the S.No of the Truck you want to delete: ";
+							cin >> a;
+							a--;
+							t.erase(t.begin() + a);
+							break;
+					}
+					break;
+				case 5:
+				{
+					menu();
+				}
+				case 6:
+					delete this;
+					exit(0);
 				}
 
 			}
@@ -838,7 +938,11 @@ void admin::bike()
 		}
 	}
 }
-
+ostream& operator<<(ostream& dout, vehicles& obj)
+{
+	cout << "\t" << obj.get_name() << "\t\t" << obj.get_stock()<<"\n";
+	return dout;
+}
 int main()
 {
 	admin* obj=new admin();
@@ -869,13 +973,15 @@ int main()
 
 	}
 
-	/*admin* obj = new admin();;
-	obj->menu();
-	/*trucks::read();
-	trucks obj;
-	obj.getdata();
-	t.push_back(obj);
-	trucks::write();*/
+	///*admin* obj = new admin();;
+	//obj->menu();*/
+	//bikes::read();
+	//cout << "\nS.No\tName\t\tStock\n\n";
+	//for (int i = 0; i < b.size(); i++)
+	//{
+	//	cout << i + 1 << b[i];
+	//}
+	//bikes::write();
 }
 	
 //pohoncho lamao nub H3h3
