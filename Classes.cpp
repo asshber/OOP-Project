@@ -345,16 +345,16 @@ fstream& operator>>(fstream& file, trucks& obj)
 	return file;
 }
 class customer {
-	string customer_name;
-	long int contact_num, CNIC,credit_card;
+	string name;
+	long int num, CNIC,credit_card;
 	bool Filer;
 	int pin;
 public:
 	void set_customerNmae(string c) {
-		customer_name = c;
+		name = c;
 	}
 	void set_contact(long int con) {
-		contact_num = con;
+		num = con;
 	}
 	void set_CNIC(long int n) {
 		CNIC = n;
@@ -369,10 +369,10 @@ public:
 		pin = p;
 	}
 	string get_customerName() {
-		return customer_name;
+		return name;
 	}
 	long int get_contact() {
-		return contact_num;
+		return num;
 	}
 	long int get_CNIC() {
 		return CNIC;
@@ -409,9 +409,9 @@ public:
 			string s;
 			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 			getline(cin, s);
-			system("CLS");
 			if (s == "tryhard")
 			{	
+				system("CLS");
 				cout << "\t WELCOME BACK ADMIN." << endl;
 				cout << "\t*********************" << endl << endl << endl << endl;
 				cout << "\t1. Modification in vehicles features." << endl;
@@ -465,30 +465,38 @@ public:
 						system("CLS");
 						switch (s)
 						{
-						case 1: {
-							cars obj;
-							obj.getdata();
-							c.push_back(obj);
+						case 1: 
+						{
+							cars obj1;
+							obj1.getdata();
+							c.push_back(obj1);
 							break;
 						}
-						case 2: {
-							trucks obj;
-							obj.getdata();
-							t.push_back(obj);
+						case 2: 
+						{
+							trucks obj2;
+							obj2.getdata();
+							t.push_back(obj2);
 							break;
 						}
-						case 3: {
-							bikes obj;
-							obj.getdata();
-							b.push_back(obj);
+						case 3: 
+						{
+							bikes obj3;
+							obj3.getdata();
+							b.push_back(obj3);
 							break;
 						}
-						case 4: {
+						case 4: 
 							menu();
-						}
+						
 						}
 
 					}
+					cout << "\nPress Any key to return to the main menu.";
+					cin.ignore();
+					cin.get();
+					menu();
+					break;
 				}
 				case 3:
 				{
