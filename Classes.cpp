@@ -11,6 +11,10 @@ private:
 	string description;
 	double price;
 public:
+	vehicles()
+	{}
+	vehicles(string& x):name(x)
+	{}
 	void set_price(double x)
 	{
 		price = x;
@@ -346,10 +350,94 @@ fstream& operator>>(fstream& file, trucks& obj)
 }
 class customer {
 	string name;
-	long int num, CNIC,credit_card;
+	long int num, CNIC, credit_card;
 	bool Filer;
 	int pin;
+	double bill;
+	vector<string> cart;
 public:
+	customer()
+	{
+		name = "test";
+		num = 0;
+		CNIC = 0;
+		credit_card = 0;
+		pin = 0;
+		bill = 0;
+		bikes::read();
+		cars::read();
+		trucks::read();
+	}
+	~customer()
+	{
+		bikes::write();
+		cars::write();
+		trucks::write();
+	}
+	void menu()
+	{
+		system("cls");
+		cout << "\t\tCustomer Portal\n";
+		cout << "\t\t***************\n\n\n";
+		cout << "Select the Vehicle you want to add to cart: \n\n";
+		cout << "\t 1. Bikes." << endl;
+		cout << "\t 2. Cars." << endl;
+		cout << "\t 3. Trucks." << endl;
+		int s;
+		cin >> s;
+		switch (s)
+		{
+		case 1:
+			bike_menu();
+			break;
+		case 2:
+			car_menu();
+			break;
+		case 3:
+			truck_menu();
+			break;
+		}
+
+	}
+	void bike_menu()
+	{
+		system("cls");
+		cout << "\t\tCustomer Portal\n";
+		cout << "\t\t***************\n\n\n";
+		bikes::list();
+		cout << "\nEnter the S.No of the Bike you want to add to cart: ";
+		int n;
+		cin >> n;
+		n--;
+		cart.push_back(b[n].get_name());
+		bill += b[n].get_price();
+	}
+	void car_menu()
+	{
+		system("cls");
+		cout << "\t\tCustomer Portal\n";
+		cout << "\t\t***************\n\n\n";
+		cars::list();
+		cout << "\nEnter the S.No of the Car you want to add to cart: ";
+		int n;
+		cin >> n;
+		n--;
+		cart.push_back(c[n].get_name());
+		bill += c[n].get_price();
+	}
+	void truck_menu()
+	{
+		system("cls");
+		cout << "\t\tCustomer Portal\n";
+		cout << "\t\t***************\n\n\n";
+		trucks::list();
+		cout << "\nEnter the S.No of the Truck you want to add to cart: ";
+		int n;
+		cin >> n;
+		n--;
+		cart.push_back(t[n].get_name());
+		bill += t[n].get_price();
+	}
 	void set_customerNmae(string c) {
 		name = c;
 	}
@@ -386,10 +474,47 @@ public:
 	int get_pin() {
 		return pin;
 	}
-	//pending cutomer details
-	//#phoncho :D
-
+	double get_bill()
+	{
+		return bill;
+	}
+	friend fstream& operator<<(fstream& file, customer& obj);
+	friend fstream& operator>>(fstream& file, customer& obj);
 };
+fstream& operator<<(fstream& file, customer& obj)
+{
+	file << ' ' << obj.get_customerName() << ';' << obj.get_CNIC() << ' ' << obj.get_contact() << ' '<<obj.get_bill()<<' ';
+	for (int i = 0; i < obj.cart.size(); i++)
+	{
+		if (i==(obj.cart.size()-1))
+		{
+			file << obj.cart[i] << ';'<<'*';
+		}
+		else
+			file << obj.cart[i]<< ';'<<' ';
+	}
+	return file;
+}
+fstream& operator>>(fstream& file, customer& obj)
+{
+	string x;
+	file.get();
+	getline(file, obj.name, ';');
+	file >> obj.CNIC;
+	file.get();
+	file >> obj.num;
+	file.get();
+	file >> obj.bill;
+	file.get();
+	for (;;)
+	{
+		getline(file, x, ';');
+		obj.cart.push_back(x);
+		if (file.get() == '*')
+			break;
+	}
+	return file;
+}
 class admin
 {
 public:
@@ -1033,7 +1158,7 @@ ostream& operator<<(ostream& dout, vehicles& obj)
 }
 int main()
 {
-	admin* obj=new admin();
+	/*admin* obj=new admin();
 	cout << "\tWELCOME TO SASUKE GARAGE" << endl;
 	cout << "\t*************************" << endl << endl << endl << endl;
 	cout << "\tPlease Choose any one:" << endl;
@@ -1059,8 +1184,13 @@ int main()
 		exit(0);
 	}
 
-	}
-
+	}*/
+	
+	customer test;
+	//test.menu();
+	fstream file("customer.txt");
+	file >> test;
+	file.close();
 	///*admin* obj = new admin();;
 	//obj->menu();*/
 	//bikes::read();
