@@ -1,5 +1,4 @@
 #include"allheaders.h"
-
 vector<bikes> b;
 vector<cars> c;
 vector<trucks> t;
@@ -370,6 +369,7 @@ public:
 	}
 	~customer()
 	{
+
 		bikes::write();
 		cars::write();
 		trucks::write();
@@ -383,6 +383,7 @@ public:
 		cout << "\t 1. Bikes." << endl;
 		cout << "\t 2. Cars." << endl;
 		cout << "\t 3. Trucks." << endl;
+		cout << "\t 4.proceed to checkout" << endl;
 		int s;
 		cin >> s;
 		switch (s)
@@ -396,6 +397,8 @@ public:
 		case 3:
 			truck_menu();
 			break;
+		case 4:
+			checkout();
 		}
 
 	}
@@ -411,6 +414,10 @@ public:
 		n--;
 		cart.push_back(b[n].get_name());
 		bill += b[n].get_price();
+		bikes obj;
+		int x = obj.get_stock() - 1;
+		obj.set_stock(x);
+		menu();
 	}
 	void car_menu()
 	{
@@ -423,7 +430,12 @@ public:
 		cin >> n;
 		n--;
 		cart.push_back(c[n].get_name());
+		system("CLS");
 		bill += c[n].get_price();
+		cars obj;
+		int x = obj.get_stock() - 1;
+		obj.set_stock(x);
+		menu();
 	}
 	void truck_menu()
 	{
@@ -437,6 +449,10 @@ public:
 		n--;
 		cart.push_back(t[n].get_name());
 		bill += t[n].get_price();
+		trucks obj;
+		int x = obj.get_stock() - 1;
+		obj.set_stock(x);
+		menu();
 	}
 	void set_customerNmae(string c) {
 		name = c;
@@ -477,6 +493,56 @@ public:
 	double get_bill()
 	{
 		return bill;
+	}
+	void checkout()
+	{
+		system("CLS");
+		string a;
+		cout << "\t Please enter your name" << endl;
+		cin.ignore();
+		getline(cin, a);
+		set_customerNmae(a);
+		cout << endl << "\t Please enter your contact number" << endl;
+		long int b;
+		cin >> b;
+		set_contact(b);
+		cout << endl << "\t Please enter your CNIC number" << endl;
+		string c;
+		cin.ignore();
+		getline(cin, c);
+	here:
+		cout << endl << "\t Please enter your 16 digit long debit card number" << endl;
+		string d;
+		cin.ignore();
+		getline(cin, d);
+		int z = d.length();
+		try
+		{
+			if (z != 16);
+			throw;
+		}
+		catch (int)
+		{
+			goto here;
+		}
+		cout << endl << "\t Are you filer?" << endl;
+		string e;
+		cin >> e;
+		here1:
+		cout << endl << "\t Please enter your 3 digit long CVV code " << endl;
+		string f;
+		cin >> f;
+		int z = f.length();
+		try
+		{
+			if (z != 3);
+			throw;
+		}
+		catch (int)
+		{
+			goto here1;
+		}
+
 	}
 	friend fstream& operator<<(fstream& file, customer& obj);
 	friend fstream& operator>>(fstream& file, customer& obj);
