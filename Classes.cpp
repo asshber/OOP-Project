@@ -357,22 +357,14 @@ class customer {
 public:
 	customer()
 	{
-		name = "test";
-		num = 0;
-		CNIC = 0;
-		credit_card = 0;
-		pin = 0;
-		bill = 0;
 		bikes::read();
 		cars::read();
 		trucks::read();
 	}
 	~customer()
 	{
-
-		bikes::write();
-		cars::write();
-		trucks::write();
+		fstream file("customer.txt", ios::app);
+		file << *this;
 	}
 	void menu()
 	{
@@ -414,9 +406,7 @@ public:
 		n--;
 		cart.push_back(b[n].get_name());
 		bill += b[n].get_price();
-		bikes obj;
-		int x = obj.get_stock() - 1;
-		obj.set_stock(x);
+		b[n].set_stock(b[n].get_stock() - 1);
 		menu();
 	}
 	void car_menu()
@@ -432,9 +422,7 @@ public:
 		cart.push_back(c[n].get_name());
 		system("CLS");
 		bill += c[n].get_price();
-		cars obj;
-		int x = obj.get_stock() - 1;
-		obj.set_stock(x);
+		c[n].set_stock(c[n].get_stock() - 1);
 		menu();
 	}
 	void truck_menu()
@@ -449,9 +437,7 @@ public:
 		n--;
 		cart.push_back(t[n].get_name());
 		bill += t[n].get_price();
-		trucks obj;
-		int x = obj.get_stock() - 1;
-		obj.set_stock(x);
+		t[n].set_stock(t[n].get_stock() - 1);
 		menu();
 	}
 	void set_customerNmae(string c) {
@@ -499,7 +485,7 @@ public:
 		system("CLS");
 		string a;
 		cout << "\t Please enter your name" << endl;
-		cin.ignore();
+		cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		getline(cin, a);
 		set_customerNmae(a);
 		cout << endl << "\t Please enter your contact number" << endl;
@@ -513,13 +499,13 @@ public:
 	here:
 		cout << endl << "\t Please enter your 16 digit long debit card number" << endl;
 		string d;
-		cin.ignore();
+		cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		getline(cin, d);
-		int z = d.length();
+		int z = d.size();
 		try
 		{
-			if (z != 16);
-			throw;
+			if (z != 15)
+			throw (z);
 		}
 		catch (int)
 		{
@@ -532,17 +518,22 @@ public:
 		cout << endl << "\t Please enter your 3 digit long CVV code " << endl;
 		string f;
 		cin >> f;
-		int z = f.length();
+		int r = f.size();
 		try
 		{
-			if (z != 3);
-			throw;
+			if (r != 3)
+				throw(z);
 		}
 		catch (int)
 		{
 			goto here1;
 		}
-
+		delete this;
+		system("cls");
+		cout << "\n\n\n\t\t\tThank You for Using Our Software.\n\nPress Any key to exit.";
+		cin.ignore();
+		cin.get();
+		exit(0);
 	}
 	friend fstream& operator<<(fstream& file, customer& obj);
 	friend fstream& operator>>(fstream& file, customer& obj);
@@ -1224,7 +1215,7 @@ ostream& operator<<(ostream& dout, vehicles& obj)
 }
 int main()
 {
-	/*admin* obj=new admin();
+	admin* obj=new admin();
 	cout << "\tWELCOME TO SASUKE GARAGE" << endl;
 	cout << "\t*************************" << endl << endl << endl << endl;
 	cout << "\tPlease Choose any one:" << endl;
@@ -1237,12 +1228,14 @@ int main()
 	{
 	case 1:
 	{
-		cout << "CUSTOMER";
+		customer* obj1 = new customer();
+		obj1->menu();
 		break;
 	}
 	case 2:
 	{
 		obj->menu();
+		break;
 	}
 	case 3:
 	{
@@ -1250,22 +1243,22 @@ int main()
 		exit(0);
 	}
 
-	}*/
+	}
 	
-	customer test;
-	//test.menu();
-	fstream file("customer.txt");
-	file >> test;
-	file.close();
-	///*admin* obj = new admin();;
-	//obj->menu();*/
-	//bikes::read();
-	//cout << "\nS.No\tName\t\tStock\n\n";
-	//for (int i = 0; i < b.size(); i++)
-	//{
-	//	cout << i + 1 << b[i];
-	//}
-	//bikes::write();
+	//customer test;
+	////test.menu();
+	//fstream file("customer.txt");
+	//file >> test;
+	//file.close();
+	/////*admin* obj = new admin();;
+	////obj->menu();*/
+	////bikes::read();
+	////cout << "\nS.No\tName\t\tStock\n\n";
+	////for (int i = 0; i < b.size(); i++)
+	////{
+	////	cout << i + 1 << b[i];
+	////}
+	////bikes::write();
 }
 	
 //pohoncho lamao nub H3h3

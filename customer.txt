@@ -1,1 +1,1 @@
- good;0 0 1 New bike;*
+ 1;0 1 6970 New bike; Ali Ashber;*
