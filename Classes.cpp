@@ -601,7 +601,8 @@ public:
 				cout << "\t3. View All Vehicles.\n";
 				cout << "\t4. Delete a Vehicle.\n";
 				cout << "\t5. Return to main menu." << endl;
-				cout << "\t6. Exit.\n";
+				cout << "\t6. View purchase history" << endl;
+				cout << "\t7. Exit.\n";
 				int a;
 				cin >> a;
 				system("CLS");
@@ -780,6 +781,22 @@ public:
 					menu();
 				}
 				case 6:
+				{
+					fstream obj;
+					obj.open("customer.txt");
+					if (obj.is_open())
+					{
+						string rec;
+						while (getline(obj, rec))
+						{
+							cout << rec << endl;
+						}
+						obj.close();
+					}
+
+				}
+					
+				case 7:
 					delete this;
 					exit(0);
 				}
@@ -1244,6 +1261,7 @@ int main()
 	}
 
 	}
+
 	
 	//customer test;
 	////test.menu();
