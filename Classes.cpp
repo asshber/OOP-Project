@@ -556,7 +556,7 @@ fstream& operator<<(fstream& file, customer& obj)
 			file << obj.cart[i] << ';'<<'*';
 		}
 		else
-			file << obj.cart[i]<< ';';
+			file << obj.cart[i]<< ';'<<' ';
 	}
 	return file;
 }
@@ -570,6 +570,7 @@ fstream& operator>>(fstream& file, customer& obj)
 	file.get();
 	file >> obj.bill;
 	file.get();
+	obj.cart.clear();
 	do
 	{
 		getline(file, x, ';');
