@@ -355,13 +355,14 @@ class customer {
 	double bill;
 	vector<string> cart;
 public:
+	friend ostream& operator<<(ostream& dout, customer& obj);
 	customer()
 	{
 		bikes::read();
 		cars::read();
 		trucks::read();
 	}
-	~customer()
+	void write()
 	{
 		fstream file("customer.txt", ios::app);
 		file << *this;
@@ -502,15 +503,15 @@ public:
 		cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		getline(cin, d);
 		int z = d.size();
-		try
-		{
-			if (z != 15)
-			throw (z);
-		}
-		catch (int)
-		{
-			goto here;
-		}
+		//try
+		//{
+		//	if (z != 15)
+		//	//throw (z);
+		//}
+		//catch (int)
+		//{
+		//	goto here;
+		//}
 		cout << endl << "\t Are you filer?" << endl;
 		string e;
 		cin >> e;
@@ -519,16 +520,18 @@ public:
 		string f;
 		cin >> f;
 		int r = f.size();
-		try
-		{
-			if (r != 3)
-				throw(z);
-		}
-		catch (int)
-		{
-			goto here1;
-		}
+		//try
+		//{
+		//	if (r != 3)
+		//		//throw(z);
+		//}
+		//catch (int)
+		//{
+		//	goto here1;
+		//}
+		this->write();
 		delete this;
+		
 		system("cls");
 		cout << "\n\n\n\t\t\tThank You for Using Our Software.\n\nPress Any key to exit.";
 		cin.ignore();
@@ -538,6 +541,11 @@ public:
 	friend fstream& operator<<(fstream& file, customer& obj);
 	friend fstream& operator>>(fstream& file, customer& obj);
 };
+ostream& operator<<(ostream& dout, customer& obj)
+{
+	cout << "\n" << obj.name<<"\t"<<obj.bill<<"\n";
+	return dout;
+}
 fstream& operator<<(fstream& file, customer& obj)
 {
 	file << ' ' << obj.get_customerName() << ';' << obj.get_CNIC() << ' ' << obj.get_contact() << ' '<<obj.get_bill()<<' ';
@@ -545,7 +553,7 @@ fstream& operator<<(fstream& file, customer& obj)
 	{
 		if (i==(obj.cart.size()-1))
 		{
-			file << obj.cart[i] << ';'<<'*';
+			file << obj.cart[i] << ';'<<'*'<<' ';
 		}
 		else
 			file << obj.cart[i]<< ';'<<' ';
@@ -568,7 +576,10 @@ fstream& operator>>(fstream& file, customer& obj)
 		getline(file, x, ';');
 		obj.cart.push_back(x);
 		if (file.get() == '*')
+		{
+			file.get();
 			break;
+		}
 	}
 	return file;
 }
@@ -782,18 +793,17 @@ public:
 				}
 				case 6:
 				{
-					fstream obj;
-					obj.open("customer.txt");
-					if (obj.is_open())
+					fstream file("customer.txt", ios::in);
+					customer obj;
+					while (file >> obj)
 					{
-						string rec;
-						while (getline(obj, rec))
-						{
-							cout << rec << endl;
-						}
-						obj.close();
+						cout << obj;
 					}
-
+					cout << "\n\n\nPress Any key to return to main menu.";
+					//cin.ignore();
+					cin.get();
+					menu();
+					break;
 				}
 					
 				case 7:
@@ -1259,10 +1269,9 @@ int main()
 		delete obj;
 		exit(0);
 	}
-
 	}
 
-	
+
 	//customer test;
 	////test.menu();
 	//fstream file("customer.txt");

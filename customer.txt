@@ -1,1 +1,1 @@
- 1;0 1 6970 New bike; Ali Ashber;*
+ New Customer;0 1 6971 Ali Ashber; anas slight pro;*  New Customer;0 2 6969 anas;* 
