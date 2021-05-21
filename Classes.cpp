@@ -548,22 +548,21 @@ ostream& operator<<(ostream& dout, customer& obj)
 }
 fstream& operator<<(fstream& file, customer& obj)
 {
-	file << ' ' << obj.get_customerName() << ';' << obj.get_CNIC() << ' ' << obj.get_contact() << ' '<<obj.get_bill()<<' ';
+	file << obj.get_customerName() << ';' << obj.get_CNIC() << ' ' << obj.get_contact() << ' '<<obj.get_bill()<<' ';
 	for (int i = 0; i < obj.cart.size(); i++)
 	{
 		if (i==(obj.cart.size()-1))
 		{
-			file << obj.cart[i] << ';'<<'*'<<' ';
+			file << obj.cart[i] << ';'<<'*';
 		}
 		else
-			file << obj.cart[i]<< ';'<<' ';
+			file << obj.cart[i]<< ';';
 	}
 	return file;
 }
 fstream& operator>>(fstream& file, customer& obj)
 {
 	string x;
-	file.get();
 	getline(file, obj.name, ';');
 	file >> obj.CNIC;
 	file.get();
@@ -571,16 +570,21 @@ fstream& operator>>(fstream& file, customer& obj)
 	file.get();
 	file >> obj.bill;
 	file.get();
-	for (;;)
+	do
 	{
+		getline(file, x, ';');
+		obj.cart.push_back(x);
+	} while (file.get() == ' ');
+	/*{
 		getline(file, x, ';');
 		obj.cart.push_back(x);
 		if (file.get() == '*')
 		{
-			file.get();
 			break;
 		}
-	}
+		else if(file.get()==' ')
+			continue;
+	}*/
 	return file;
 }
 class admin
@@ -800,7 +804,7 @@ public:
 						cout << obj;
 					}
 					cout << "\n\n\nPress Any key to return to main menu.";
-					//cin.ignore();
+					cin.ignore();
 					cin.get();
 					menu();
 					break;
