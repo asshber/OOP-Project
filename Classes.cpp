@@ -10,10 +10,6 @@ private:
 	string description;
 	double price;
 public:
-	vehicles()
-	{}
-	vehicles(string& x):name(x)
-	{}
 	void set_price(double x)
 	{
 		price = x;
@@ -543,7 +539,13 @@ public:
 };
 ostream& operator<<(ostream& dout, customer& obj)
 {
-	cout << "\n" << obj.name<<"\t"<<obj.bill<<"\n";
+	int static i = 1;
+	cout << "\n" <<i<<")"<< "\t"<<obj.name<<"\t"<<obj.bill<<"\n";
+	for (int f = 0; f < obj.cart.size(); f++)
+	{
+		cout <<"\t\t\t"<< obj.cart[f] << "\n";
+	}
+	i++;
 	return dout;
 }
 fstream& operator<<(fstream& file, customer& obj)
