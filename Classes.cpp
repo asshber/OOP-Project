@@ -2,6 +2,7 @@
 vector<bikes> b;
 vector<cars> c;
 vector<trucks> t;
+int main();
 class vehicles
 {
 private:
@@ -491,43 +492,43 @@ public:
 		set_contact(b);
 		cout << endl << "\t Please enter your CNIC number" << endl;
 		string c;
+		cin.clear();
 		cin.ignore();
 		getline(cin, c);
 	here:
 		cout << endl << "\t Please enter your 16 digit long debit card number" << endl;
 		string d;
-		cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		getline(cin, d);
-		int z = d.size();
-		//try
-		//{
-		//	if (z != 15)
-		//	//throw (z);
-		//}
-		//catch (int)
-		//{
-		//	goto here;
-		//}
+		int z = d.length();
+		try
+		{
+			if (z != 16)
+				throw 1;
+		}
+		catch (int)
+		{
+			goto here;
+		}
 		cout << endl << "\t Are you filer?" << endl;
 		string e;
 		cin >> e;
-		here1:
+	here1:
 		cout << endl << "\t Please enter your 3 digit long CVV code " << endl;
 		string f;
 		cin >> f;
 		int r = f.size();
-		//try
-		//{
-		//	if (r != 3)
-		//		//throw(z);
-		//}
-		//catch (int)
-		//{
-		//	goto here1;
-		//}
+		try
+		{
+			if (r != 3)
+				throw 1;
+		}
+		catch (int)
+		{
+			goto here1;
+		}
 		this->write();
 		delete this;
-		
+
 		system("cls");
 		cout << "\n\n\n\t\t\tThank You for Using Our Software.\n\nPress Any key to exit.";
 		cin.ignore();
@@ -540,25 +541,25 @@ public:
 ostream& operator<<(ostream& dout, customer& obj)
 {
 	int static i = 1;
-	cout << "\n" <<i<<")"<< "\t"<<obj.name<<"\t"<<obj.bill<<"\n";
+	cout << "\n" << i << ")" << "\t" << obj.name << "\t" << obj.bill << "\n";
 	for (int f = 0; f < obj.cart.size(); f++)
 	{
-		cout <<"\t\t\t"<< obj.cart[f] << "\n";
+		cout << "\t\t\t" << obj.cart[f] << "\n";
 	}
 	i++;
 	return dout;
 }
 fstream& operator<<(fstream& file, customer& obj)
 {
-	file << obj.get_customerName() << ';' << obj.get_CNIC() << ' ' << obj.get_contact() << ' '<<obj.get_bill()<<' ';
+	file << obj.get_customerName() << ';' << obj.get_CNIC() << ' ' << obj.get_contact() << ' ' << obj.get_bill() << ' ';
 	for (int i = 0; i < obj.cart.size(); i++)
 	{
-		if (i==(obj.cart.size()-1))
+		if (i == (obj.cart.size() - 1))
 		{
-			file << obj.cart[i] << ';'<<'*';
+			file << obj.cart[i] << ';' << '*';
 		}
 		else
-			file << obj.cart[i]<< ';'<<' ';
+			file << obj.cart[i] << ';' << ' ';
 	}
 	return file;
 }
@@ -602,25 +603,68 @@ public:
 		cars::read();
 		bikes::read();
 	}
+	void password()
+	{
+		system("CLS");
+		cout << "\tPlease Enter the password." << endl;
+		string s;
+		cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		getline(cin, s);
+		if (s == "tryhard")
+		{
+			menu();
+		}
+		else
+		{
+			system("CLS");
+			cout << "\tWrong password !" << endl;
+			cout << "\tDo you want to go back?" << endl;
+			cout << "\t1. Yes " << endl;
+			cout << "\t2. No" << endl;
+			int a;
+			cin >> a;
+			system("CLS");
+			switch (a)
+			{
+			case 1:
+			{
+				main();
+			}
+			case 0:
+			{
+				delete this;
+				exit(0);
+			}
+			}
+		}
+
+	}
 	void menu()
 	{
+
+		{
 			system("CLS");
-			cout << "\tPlease Enter the password." << endl;
-			string s;
-			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-			getline(cin, s);
-			if (s == "tryhard")
-			{	
-				system("CLS");
-				cout << "\t WELCOME BACK ADMIN." << endl;
-				cout << "\t*********************" << endl << endl << endl << endl;
-				cout << "\t1. Modification in vehicles features." << endl;
-				cout << "\t2. Change in vehicles." << endl;
-				cout << "\t3. View All Vehicles.\n";
-				cout << "\t4. Delete a Vehicle.\n";
-				cout << "\t5. Return to main menu." << endl;
-				cout << "\t6. View purchase history" << endl;
-				cout << "\t7. Exit.\n";
+			cout << "\t WELCOME BACK ADMIN." << endl;
+			cout << "\t*********************" << endl << endl << endl << endl;
+			cout << "\t1. Modification in vehicles features." << endl;
+			cout << "\t2. Change in vehicles." << endl;
+			cout << "\t3. View All Vehicles.\n";
+			cout << "\t4. Delete a Vehicle.\n";
+			cout << "\t5. Return to main menu." << endl;
+			cout << "\t6. View purchase history" << endl;
+			cout << "\t7. Exit.\n";
+			int a;
+			cin >> a;
+			system("CLS");
+			switch (a)
+			{
+			case 1:
+			{
+				cout << "\t MODIFICATION IN VEHICLE FEATURES." << endl;
+				cout << "\t***********************************" << endl << endl << endl << endl;
+				cout << "\t 1. Modification in cars inventory." << endl;
+				cout << "\t 2. Modification in trucks inventory." << endl;
+				cout << "\t 3. Modification in Bikes inventory." << endl;
 				int a;
 				cin >> a;
 				system("CLS");
@@ -628,220 +672,186 @@ public:
 				{
 				case 1:
 				{
-					cout << "\t MODIFICATION IN VEHICLE FEATURES." << endl;
-					cout << "\t***********************************" << endl << endl << endl << endl;
-					cout << "\t 1. Modification in cars inventory." << endl;
-					cout << "\t 2. Modification in trucks inventory." << endl;
-					cout << "\t 3. Modification in Bikes inventory." << endl;
-					int a;
-					cin >> a;
-					system("CLS");
-					switch (a)
-					{
-					case 1:
-					{
-						car();
-					}
-					case 2:
-					{
-						truck();
-					}
-					case 3:
-					{
-						bike();
-					}
-					}
-
+					car();
 				}
 				case 2:
 				{
-					{
-						cout << "\t CHANGE IN VEHICLE." << endl;
-						cout << "\t******************" << endl << endl << endl << endl;
-						cout << "\t 1. Addition in cars inventory." << endl;
-						cout << "\t 2. Addition in trucks inventory." << endl;
-						cout << "\t 3. Addition in Bikes inventory." << endl;
-						int s;
-						cin >> s;
-						system("CLS");
-						switch (s)
-						{
-						case 1: 
-						{
-							cars obj1;
-							obj1.getdata();
-							c.push_back(obj1);
-							break;
-						}
-						case 2: 
-						{
-							trucks obj2;
-							obj2.getdata();
-							t.push_back(obj2);
-							break;
-						}
-						case 3: 
-						{
-							bikes obj3;
-							obj3.getdata();
-							b.push_back(obj3);
-							break;
-						}
-						case 4: 
-							menu();
-						
-						}
-
-					}
-					cout << "\nPress Any key to return to the main menu.";
-					cin.ignore();
-					cin.get();
-					menu();
-					break;
+					truck();
 				}
 				case 3:
 				{
-					cout << "\t WELCOME BACK ADMIN." << endl;
-					cout << "\t*********************" << endl << endl << endl << endl;
-					cout << "\t1. View All Bikes" << endl;
-					cout << "\t2. View All Cars" << endl;
-					cout << "\t3. View All Trucks\n";
-					cout << "\t4. Exit" << endl;
-					int a;
-					cin >> a;
-					switch (a)
-					{
-					case 1:
-						system("cls");
-						cout << "\t WELCOME BACK ADMIN." << endl;
-						cout << "\t*********************" << endl << endl << endl << endl;
-						cout << "\nS.No\tName\t\tStock\n\n";
-						for (int i = 0; i < b.size(); i++)
-						{
-							cout << i + 1 << b[i];
-						}
-						break;
-					case 2:
-						system("cls");
-						cout << "\t WELCOME BACK ADMIN." << endl;
-						cout << "\t*********************" << endl << endl << endl << endl;
-						cout << "\nS.No\tName\t\tStock\n\n";
-						for (int i = 0; i < c.size(); i++)
-						{
-							cout << i + 1 << c[i];
-						}
-						break;
-					case 3:
-						system("cls");
-						cout << "\t WELCOME BACK ADMIN." << endl;
-						cout << "\t*********************" << endl << endl << endl << endl;
-						cout << "\nS.No\tName\t\tStock\n\n";
-						for (int i = 0; i < t.size(); i++)
-						{
-							cout << i + 1 << t[i];
-						}
-						break;
-					default:
-						cout << "\nYou Entered and Invalid choice\n\nPress any key to Exit.";
-						cin.ignore();
-						cin.get();
-						delete this;
-						exit(0);
-						break;
-					}
-					cout << "\n\nPress any key to return to main menu.";
-					cin.ignore();
-					cin.get();
-					menu();
+					bike();
 				}
-				case 4:
-					cout << "\t WELCOME BACK ADMIN." << endl;
-					cout << "\t*********************" << endl << endl << endl << endl;
-					cout << "\t1. Delete a Bike" << endl;
-					cout << "\t2. Delete a Car" << endl;
-					cout << "\t3. Delete a Truck\n";
-					cout << "\t4. Exit" << endl;
-					int a;
-					cin >> a;
-					switch (a)
-					{
-						case 1:
-							cout << "\t WELCOME BACK ADMIN." << endl;
-							cout << "\t*********************" << endl << endl << endl << endl;
-							bikes::list();
-							cout << "\n\nEnter the S.No of the bike you want to delete: ";
-							cin >> a;
-							a--;
-							b.erase(b.begin() + a);
-							break;
-						case 2:
-							cout << "\t WELCOME BACK ADMIN." << endl;
-							cout << "\t*********************" << endl << endl << endl << endl;
-							cars::list();
-							cout << "\n\nEnter the S.No of the Car you want to delete: ";
-							cin >> a;
-							a--;
-							c.erase(c.begin() + a);
-							break;
-						case 3:
-							cout << "\t WELCOME BACK ADMIN." << endl;
-							cout << "\t*********************" << endl << endl << endl << endl;
-							trucks::list();
-							cout << "\n\nEnter the S.No of the Truck you want to delete: ";
-							cin >> a;
-							a--;
-							t.erase(t.begin() + a);
-							break;
-					}
-					break;
-				case 5:
-				{
-					menu();
-				}
-				case 6:
-				{
-					fstream file("customer.txt", ios::in);
-					customer obj;
-					while (file >> obj)
-					{
-						cout << obj;
-					}
-					cout << "\n\n\nPress Any key to return to main menu.";
-					cin.ignore();
-					cin.get();
-					menu();
-					break;
-				}
-					
-				case 7:
-					delete this;
-					exit(0);
 				}
 
 			}
-			else
+			case 2:
 			{
-				system("CLS");
-				cout << "\tWrong password !" << endl;
-				cout << "\tDo you want to go back?" << endl;
-				cout << "\t1. Yes " << endl;
-				cout << "\t2. No" << endl;
+				{
+					cout << "\t CHANGE IN VEHICLE." << endl;
+					cout << "\t******************" << endl << endl << endl << endl;
+					cout << "\t 1. Addition in cars inventory." << endl;
+					cout << "\t 2. Addition in trucks inventory." << endl;
+					cout << "\t 3. Addition in Bikes inventory." << endl;
+					int s;
+					cin >> s;
+					system("CLS");
+					switch (s)
+					{
+					case 1:
+					{
+						cars obj1;
+						obj1.getdata();
+						c.push_back(obj1);
+						break;
+					}
+					case 2:
+					{
+						trucks obj2;
+						obj2.getdata();
+						t.push_back(obj2);
+						break;
+					}
+					case 3:
+					{
+						bikes obj3;
+						obj3.getdata();
+						b.push_back(obj3);
+						break;
+					}
+					case 4:
+						menu();
+
+					}
+
+				}
+				cout << "\nPress Any key to return to the main menu.";
+				cin.ignore();
+				cin.get();
+				menu();
+				break;
+			}
+			case 3:
+			{
+				cout << "\t WELCOME BACK ADMIN." << endl;
+				cout << "\t*********************" << endl << endl << endl << endl;
+				cout << "\t1. View All Bikes" << endl;
+				cout << "\t2. View All Cars" << endl;
+				cout << "\t3. View All Trucks\n";
+				cout << "\t4. Exit" << endl;
 				int a;
 				cin >> a;
-				system("CLS");
 				switch (a)
 				{
 				case 1:
-				{
-					menu();
-				}
-				case 0:
-				{
+					system("cls");
+					cout << "\t WELCOME BACK ADMIN." << endl;
+					cout << "\t*********************" << endl << endl << endl << endl;
+					cout << "\nS.No\tName\t\tStock\n\n";
+					for (int i = 0; i < b.size(); i++)
+					{
+						cout << i + 1 << b[i];
+					}
+					break;
+				case 2:
+					system("cls");
+					cout << "\t WELCOME BACK ADMIN." << endl;
+					cout << "\t*********************" << endl << endl << endl << endl;
+					cout << "\nS.No\tName\t\tStock\n\n";
+					for (int i = 0; i < c.size(); i++)
+					{
+						cout << i + 1 << c[i];
+					}
+					break;
+				case 3:
+					system("cls");
+					cout << "\t WELCOME BACK ADMIN." << endl;
+					cout << "\t*********************" << endl << endl << endl << endl;
+					cout << "\nS.No\tName\t\tStock\n\n";
+					for (int i = 0; i < t.size(); i++)
+					{
+						cout << i + 1 << t[i];
+					}
+					break;
+				default:
+					cout << "\nYou Entered and Invalid choice\n\nPress any key to Exit.";
+					cin.ignore();
+					cin.get();
 					delete this;
 					exit(0);
+					break;
 				}
-				}
+				cout << "\n\nPress any key to return to main menu.";
+				cin.ignore();
+				cin.get();
+				menu();
 			}
+			case 4:
+				cout << "\t WELCOME BACK ADMIN." << endl;
+				cout << "\t*********************" << endl << endl << endl << endl;
+				cout << "\t1. Delete a Bike" << endl;
+				cout << "\t2. Delete a Car" << endl;
+				cout << "\t3. Delete a Truck\n";
+				cout << "\t4. Exit" << endl;
+				int a;
+				cin >> a;
+				switch (a)
+				{
+				case 1:
+					cout << "\t WELCOME BACK ADMIN." << endl;
+					cout << "\t*********************" << endl << endl << endl << endl;
+					bikes::list();
+					cout << "\n\nEnter the S.No of the bike you want to delete: ";
+					cin >> a;
+					a--;
+					b.erase(b.begin() + a);
+					break;
+				case 2:
+					cout << "\t WELCOME BACK ADMIN." << endl;
+					cout << "\t*********************" << endl << endl << endl << endl;
+					cars::list();
+					cout << "\n\nEnter the S.No of the Car you want to delete: ";
+					cin >> a;
+					a--;
+					c.erase(c.begin() + a);
+					break;
+				case 3:
+					cout << "\t WELCOME BACK ADMIN." << endl;
+					cout << "\t*********************" << endl << endl << endl << endl;
+					trucks::list();
+					cout << "\n\nEnter the S.No of the Truck you want to delete: ";
+					cin >> a;
+					a--;
+					t.erase(t.begin() + a);
+					break;
+				}
+				break;
+			case 5:
+			{
+				main();
+			}
+			case 6:
+			{
+				fstream file("customer.txt", ios::in);
+				customer obj;
+				while (file >> obj)
+				{
+					cout << obj;
+				}
+				cout << "\n\n\nPress Any key to return to main menu.";
+				cin.ignore();
+				cin.get();
+				menu();
+				break;
+			}
+
+			case 7:
+				delete this;
+				exit(0);
+			}
+
+		}
+
 	}
 	~admin()
 	{
@@ -1244,12 +1254,12 @@ void admin::bike()
 }
 ostream& operator<<(ostream& dout, vehicles& obj)
 {
-	cout << "\t" << obj.get_name() << "\t\t" << obj.get_stock()<<"\n";
+	cout << "\t" << obj.get_name() << "\t\t" << obj.get_stock() << "\n";
 	return dout;
 }
 int main()
 {
-	admin* obj=new admin();
+	admin* obj = new admin();
 	cout << "\tWELCOME TO SASUKE GARAGE" << endl;
 	cout << "\t*************************" << endl << endl << endl << endl;
 	cout << "\tPlease Choose any one:" << endl;
@@ -1268,7 +1278,7 @@ int main()
 	}
 	case 2:
 	{
-		obj->menu();
+		obj->password();
 		break;
 	}
 	case 3:
@@ -1294,5 +1304,5 @@ int main()
 	////}
 	////bikes::write();
 }
-	
-//pohoncho lamao nub H3h3
+
+//ez done lamao
