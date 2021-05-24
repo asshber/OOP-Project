@@ -647,7 +647,8 @@ public:
 		string password;
 		int ch;
 
-		while ((ch = _getch()) != '\r') {
+		while ((ch = _getch()) != '\r') 
+		{
 			if (ch == '\b') {
 				if (password.size() > 0) {
 					password.erase(password.size() - 1, 1);
@@ -666,7 +667,18 @@ public:
 		}
 		else
 		{
-			cout << "wrong pw";
+			cout << "\nwrong password.\n";
+			cout << "\n1: Retry\n2: Exit";
+			int x;
+			cin >> x;
+			switch (x)
+			{
+			case 1:
+				this->password();
+			case 2:
+				delete this;
+				exit(0);
+			}
 		}
 std::cout.put('\n');
 		
