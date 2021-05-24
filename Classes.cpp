@@ -1,4 +1,7 @@
 #include"allheaders.h"
+#include<conio.h>
+#include<cstdlib>
+#include<cstring>
 vector<bikes> b;
 vector<cars> c;
 vector<trucks> t;
@@ -355,6 +358,7 @@ public:
 	friend ostream& operator<<(ostream& dout, customer& obj);
 	customer()
 	{
+		
 		b.clear();
 		c.clear();
 		t.clear();
@@ -498,11 +502,23 @@ public:
 		cin.clear();
 		cin.ignore();
 		getline(cin, c);
-	here:
+	here0:
 		cout << endl << "\t Please enter your 16 digit long debit card number" << endl;
-		string d;
-		getline(cin, d);
-		int z = d.length();
+		string cnumber;
+		int ch;
+		while ((ch = _getch()) != '\r') {
+			if (ch == '\b') {
+				if (cnumber.size() > 0) {
+					cnumber.erase(cnumber.size() - 1, 1);
+					cout << "\b \b";
+				}
+			}
+			else {
+				cnumber.push_back(ch);
+				cout.put('*');
+			}
+		}
+		int z = cnumber.length();
 		try
 		{
 			if (z != 16)
@@ -510,25 +526,43 @@ public:
 		}
 		catch (int)
 		{
-			goto here;
+			cout << endl <<  "CARD NUMBER MUST BE 16 DIGITS LONG! " << endl;
+			goto here0;
 		}
+		std::cout.put('\n');
 		cout << endl << "\t Are you filer?" << endl;
 		string e;
 		cin >> e;
-	here1:
-		cout << endl << "\t Please enter your 3 digit long CVV code " << endl;
-		string f;
-		cin >> f;
-		int r = f.size();
+		here1:
+		cout << endl << "\t Please enter your CVV code " << endl;
+		string code;
+		int ch1;
+		while ((ch1 = _getch()) != '\r') {
+			if (ch1 == '\b') {
+				if (code.size() > 0) {
+					code.erase(code.size() - 1, 1);
+					cout << "\b \b";
+				}
+			}
+			else {
+				code.push_back(ch);
+				cout.put('*');
+			}
+		}
+		int we = code.length();
 		try
 		{
-			if (r != 3)
+			if (we != 3)
 				throw 1;
 		}
 		catch (int)
 		{
+			cout << endl <<  "CARD PIN MUST BE 3 DIGITS LONG! " << endl;
 			goto here1;
 		}
+
+		std::cout.put('\n');
+
 		this->write();
 		delete this;
 
@@ -610,38 +644,33 @@ public:
 	{
 		system("CLS");
 		cout << "\tPlease Enter the password." << endl;
-		string s;
-		cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-		getline(cin, s);
-		if (s == "tryhard")
+		string password;
+		int ch;
+
+		while ((ch = _getch()) != '\r') {
+			if (ch == '\b') {
+				if (password.size() > 0) {
+					password.erase(password.size() - 1, 1);
+					std::cout << "\b \b";
+				}
+			}
+			else {
+				password.push_back(ch);
+				std::cout.put('*');
+			}
+			}
+		if (password == "tryhard")
 		{
 			menu();
+
 		}
 		else
 		{
-			system("CLS");
-			cout << "\tWrong password !" << endl;
-			cout << "\tDo you want to go back?" << endl;
-			cout << "\t1. Yes " << endl;
-			cout << "\t2. No" << endl;
-			int a;
-			cin >> a;
-			system("CLS");
-			switch (a)
-			{
-			case 1:
-			{
-				main();
-			}
-			case 0:
-			{
-				delete this;
-				exit(0);
-			}
-			}
+			cout << "wrong pw";
 		}
-
-	}
+std::cout.put('\n');
+		
+		}
 	void menu()
 	{
 
