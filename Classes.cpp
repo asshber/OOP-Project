@@ -828,6 +828,10 @@ public:
 					t.erase(t.begin() + a);
 					break;
 				}
+				cout << "\n\nPress Any key to return to main menu.\n";
+				cin.ignore();
+				cin.get();
+				menu();
 				break;
 			case 5:
 			{
