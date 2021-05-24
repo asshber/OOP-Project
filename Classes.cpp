@@ -355,6 +355,9 @@ public:
 	friend ostream& operator<<(ostream& dout, customer& obj);
 	customer()
 	{
+		b.clear();
+		c.clear();
+		t.clear();
 		bikes::read();
 		cars::read();
 		trucks::read();
@@ -544,7 +547,7 @@ ostream& operator<<(ostream& dout, customer& obj)
 	cout << "\n" << i << ")" << "\t" << obj.name << "\t" << obj.bill << "\n";
 	for (int f = 0; f < obj.cart.size(); f++)
 	{
-		cout << "\t\t\t" << obj.cart[f] << "\n";
+		cout << "\t\t\t\t\t" << obj.cart[f] << "\n";
 	}
 	i++;
 	return dout;
@@ -834,6 +837,8 @@ public:
 			{
 				fstream file("customer.txt", ios::in);
 				customer obj;
+				cout << "\nS.No\tCustomer Name\tBill Amount\tVehicle's bought";
+				cout << "\n===\t=============\t==========\t=================\n\n";
 				while (file >> obj)
 				{
 					cout << obj;
