@@ -1,9 +1,14 @@
 #pragma once
+#define NOMINMAX
 #include<iostream>
 #include<string>
 #include<vector>
 #include<fstream>
 #include<conio.h>
+#include<cstdlib>
+#include<cstring>
+#include<algorithm>
+#include<Windows.h>
 using namespace std;
 //All Declarations
 class vehicles;
@@ -16,6 +21,7 @@ class admin;
 //void admin::car();
 //void admin::truck();
 //void admin::bike();
+int main();
 fstream& operator<<(fstream& file, bikes& obj);
 fstream& operator>>(fstream& file, bikes& obj);
 fstream& operator<<(fstream& file, cars& obj);

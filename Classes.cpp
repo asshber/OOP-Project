@@ -1,15 +1,7 @@
-#define NOMINMAX
 #include"allheaders.h"
-#include<conio.h>
-#include<cstdlib>
-#include<cstring>
-#include<algorithm>
-#include<Windows.h>
 vector<bikes> b;
 vector<cars> c;
 vector<trucks> t;
-
-int main();
 class vehicles
 {
 private:
@@ -360,6 +352,12 @@ class customer {
 	vector<string> cart;
 public:
 	friend ostream& operator<<(ostream& dout, customer& obj);
+	~customer()
+	{
+		bikes::write();
+		cars::write();
+		trucks::write();
+	}
 	customer()
 	{
 		
@@ -513,7 +511,8 @@ public:
 	{
 		system("CLS");
 		string a;
-		cout << "\t\t\tPlease enter your name" << endl;
+		cout << "\n\n\t\t\tYour Due Amount is $" << bill;
+		cout << "\n\n\n\n\t\t\tPlease enter your name" << endl;
 		cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		getline(cin, a);
 		set_customerNmae(a);
@@ -542,7 +541,7 @@ public:
 				cout.put('*');
 			}
 		}
-		int z = cnumber.length();
+		auto z = cnumber.length();
 		try
 		{
 			if (z != 16)
@@ -573,7 +572,7 @@ public:
 				cout.put('*');
 			}
 		}
-		int we = code.length();
+		auto we = code.length();
 		try
 		{
 			if (we != 3)
@@ -602,7 +601,7 @@ public:
 ostream& operator<<(ostream& dout, customer& obj)
 {
 	int static i = 1;
-	cout << "\n" << i << ")" << "\t" << obj.name << "\t" << obj.bill << "\n";
+	cout << "\n" << i << ")" << "\t" << obj.name << "\t$" << obj.bill << "\n";
 	for (int f = 0; f < obj.cart.size(); f++)
 	{
 		cout << "\t\t\t\t\t" << obj.cart[f] << "\n";
@@ -720,12 +719,12 @@ std::cout.put('\n');
 			Sleep(50);
 			cout << "\t\t|-------------------------------------------------------------------------------------|" << endl;
 			Sleep(50);
-			cout << "\t\t\t1. Modification in vehicles features." << endl;
-			cout << "\t\t\t2. Change in vehicles." << endl;
+			cout << "\t\t\t1. Modification in Vehicles." << endl;
+			cout << "\t\t\t2. Add a vehicles." << endl;
 			cout << "\t\t\t3. View All Vehicles.\n";
 			cout << "\t\t\t4. Delete a Vehicle.\n";
-			cout << "\t\t\t5. Return to main menu." << endl;
-			cout << "\t\t\t6. View purchase history" << endl;
+			cout << "\t\t\t5. View purchase history" << endl;
+			cout << "\t\t\t6. Return to main menu." << endl;
 			cout << "\t\t\t7. Exit.\n";
 			int a;
 			cin >> a;
@@ -845,7 +844,7 @@ std::cout.put('\n');
 					Sleep(50);
 					cout << "\t\t|-------------------------------------------------------------------------------------|" << endl;
 					Sleep(50);
-					cout << "\nS.No\tName\t\tStock\n\n";
+					cout << "\nS.No\tName\t\t\tStock\n\n";
 					for (int i = 0; i < b.size(); i++)
 					{
 						cout << i + 1 << b[i];
@@ -861,7 +860,7 @@ std::cout.put('\n');
 					Sleep(50);
 					cout << "\t\t|-------------------------------------------------------------------------------------|" << endl;
 					Sleep(50);
-					cout << "\nS.No\tName\t\tStock\n\n";
+					cout << "\nS.No\tName\t\t\tStock\n\n";
 					for (int i = 0; i < c.size(); i++)
 					{
 						cout << i + 1 << c[i];
@@ -877,7 +876,7 @@ std::cout.put('\n');
 					Sleep(50);
 					cout << "\t\t|-------------------------------------------------------------------------------------|" << endl;
 					Sleep(50);
-					cout << "\nS.No\tName\t\tStock\n\n";
+					cout << "\nS.No\tName\t\t\tStock\n\n";
 					for (int i = 0; i < t.size(); i++)
 					{
 						cout << i + 1 << t[i];
@@ -965,11 +964,11 @@ std::cout.put('\n');
 				cin.get();
 				menu();
 				break;
-			case 5:
+			case 6:
 			{
 				main();
 			}
-			case 6:
+			case 5:
 			{
 				fstream file("customer.txt", ios::in);
 				customer obj;
@@ -1344,7 +1343,7 @@ void admin::bike()
 		}
 		case 2:
 		{
-			cout << "\t\t\tPlease Enter new color?";
+			cout << "\t\t\t\n\nPlease Enter new color?";
 			string x;
 			cin >> x;
 			for (int i = a - 1; i < a; i++)
@@ -1356,7 +1355,7 @@ void admin::bike()
 		}
 		case 3:
 		{
-			cout << "\t\t\tPlease Enter new stock?";
+			cout << "\t\t\t\n\nPlease Enter new stock?";
 			int x;
 			cin >> x;
 			for (int i = a - 1; i < a; i++)
@@ -1368,7 +1367,7 @@ void admin::bike()
 		}
 		case 4:
 		{
-			cout << "\t\t\tPlease Enter new horse power?";
+			cout << "\t\t\t\n\nPlease Enter new horse power?";
 			int x;
 			cin >> x;
 			for (int i = a - 1; i < a; i++)
@@ -1380,7 +1379,7 @@ void admin::bike()
 		}
 		case 5:
 		{
-			cout << "\t\t\tPlease Enter new description?";
+			cout << "\t\t\t\n\nPlease Enter new description?";
 			string x;
 			cin.ignore();
 			getline(cin, x);
@@ -1393,7 +1392,7 @@ void admin::bike()
 		}
 		case 6:
 		{
-			cout << "\t\t\tPlease Enter new name?";
+			cout << "\t\t\t\n\nPlease Enter new name?";
 			string x;
 			cin.ignore();
 			getline(cin, x);
@@ -1413,12 +1412,12 @@ void admin::bike()
 }
 ostream& operator<<(ostream& dout, vehicles& obj)
 {
-	cout << "\t" << obj.get_name() << "\t\t" << obj.get_stock() << "\n";
+	cout << "\t" << obj.get_name() << "\t\t\t" << obj.get_stock() << "\n";
 	return dout;
 }
 int main()
 {
-	system("color 70");
+	system("color 0A");
 	admin* obj = new admin();
 	Sleep(50);
 	cout << "\n\n\n\n";
@@ -1446,39 +1445,21 @@ int main()
 	cin >> a;
 	switch (a)
 	{
-	case 1:
-	{
-		customer* obj1 = new customer();
-		obj1->menu();
-		break;
+		case 1:
+		{
+			customer* obj1 = new customer();
+			obj1->menu();
+			break;
+		}
+		case 2:
+		{
+			obj->password();
+			break;
+		}
+		case 3:
+		{
+			delete obj;
+			exit(0);
+		}
 	}
-	case 2:
-	{
-		obj->password();
-		break;
-	}
-	case 3:
-	{
-		delete obj;
-		exit(0);
-	}
-	}
-
-
-	//customer test;
-	////test.menu();
-	//fstream file("customer.txt");
-	//file >> test;
-	//file.close();
-	/////*admin* obj = new admin();;
-	////obj->menu();*/
-	////bikes::read();
-	////cout << "\nS.No\tName\t\tStock\n\n";
-	////for (int i = 0; i < b.size(); i++)
-	////{
-	////	cout << i + 1 << b[i];
-	////}
-	////bikes::write();
 }
-
-//ez done lamao
