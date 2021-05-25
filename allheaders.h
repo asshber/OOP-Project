@@ -11,6 +11,7 @@
 #include<Windows.h>
 using namespace std;
 //All Declarations
+void menu_screen();
 class vehicles;
 class bikes;
 class cars;

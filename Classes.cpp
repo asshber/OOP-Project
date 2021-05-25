@@ -554,6 +554,8 @@ public:
 		}
 		std::cout.put('\n');
 		cout << endl << "\t\t\tAre you filer?" << endl;
+		cout << endl << "\t\t\t1.Yes" << endl;
+		cout << endl << "\t\t\t2.No" << endl;
 		string e;
 		cin >> e;
 		here1:
@@ -639,16 +641,7 @@ fstream& operator>>(fstream& file, customer& obj)
 		getline(file, x, ';');
 		obj.cart.push_back(x);
 	} while (file.get() == ' ');
-	/*{
-		getline(file, x, ';');
-		obj.cart.push_back(x);
-		if (file.get() == '*')
-		{
-			break;
-		}
-		else if(file.get()==' ')
-			continue;
-	}*/
+	
 	return file;
 }
 class admin
@@ -1417,7 +1410,11 @@ ostream& operator<<(ostream& dout, vehicles& obj)
 }
 int main()
 {
+	
 	system("color 0A");
+	menu_screen();
+}
+void menu_screen() {
 	admin* obj = new admin();
 	Sleep(50);
 	cout << "\n\n\n\n";
@@ -1445,21 +1442,21 @@ int main()
 	cin >> a;
 	switch (a)
 	{
-		case 1:
-		{
-			customer* obj1 = new customer();
-			obj1->menu();
-			break;
-		}
-		case 2:
-		{
-			obj->password();
-			break;
-		}
-		case 3:
-		{
-			delete obj;
-			exit(0);
-		}
+	case 1:
+	{
+		customer* obj1 = new customer();
+		obj1->menu();
+		break;
+	}
+	case 2:
+	{
+		obj->password();
+		break;
+	}
+	case 3:
+	{
+		delete obj;
+		exit(0);
+	}
 	}
 }
