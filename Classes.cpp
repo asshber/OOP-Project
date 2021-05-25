@@ -107,7 +107,7 @@ public:
 	}
 	static void list()
 	{
-		cout << "\nS.No" << "\t" << "Name of Bikes" << "\n\n";
+		cout << "\t\t\t\nS.No" << "\t" << "Name of Bikes" << "\n\n";
 		for (int i = 0; i < b.size(); i++)
 		{
 			cout << i + 1 << "\t" << b[i].get_name() << "\n";
@@ -208,7 +208,7 @@ public:
 	}
 	static void list()
 	{
-		cout << "\nS.No" << "\t" << "Name of Cars" << "\n\n";
+		cout << "\t\t\t\nS.No" << "\t" << "Name of Cars" << "\n\n";
 		for (int i = 0; i < c.size(); i++)
 		{
 			cout << i + 1 << ": " << c[i].get_name() << "\n";
@@ -311,7 +311,7 @@ public:
 	}
 	static void list()
 	{
-		cout << "\nS.No" << "\t" << "Name of Trucks" << "\n\n";
+		cout << "\t\t\t\nS.No" << "\t" << "Name of Trucks" << "\n\n";
 		for (int i = 0; i < t.size(); i++)
 		{
 			cout << i + 1 << "\t" << t[i].get_name() << "\n";
@@ -383,7 +383,7 @@ public:
 		Sleep(50);
 		cout << "\t\t|                      ******************                                             |" << endl;
 		Sleep(50);
-		cout << "\t\t\t|-------------------------------------------------------------------------------------|" << endl;
+		cout << "\t\t|-------------------------------------------------------------------------------------|" << endl;
 		cout << "\t\t\tSelect the Vehicle you want to add to cart: \n\n";
 		cout << "\t\t\t1. Bikes." << endl;
 		cout << "\t\t\t2. Cars." << endl;
