@@ -8,6 +8,7 @@
 vector<bikes> b;
 vector<cars> c;
 vector<trucks> t;
+
 int main();
 class vehicles
 {
@@ -1417,6 +1418,7 @@ ostream& operator<<(ostream& dout, vehicles& obj)
 }
 int main()
 {
+	system("color E0");
 	admin* obj = new admin();
 	Sleep(50);
 	cout << "\n\n\n\n";
