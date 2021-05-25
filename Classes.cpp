@@ -100,10 +100,10 @@ public:
 	}
 	static void list()
 	{
-		cout << "\t\t\t\nS.No" << "\t" << "Name of Bikes" << "\n\n";
+		cout << "\t\t\t\nS.No" << "\t" << "Name of Bikes" << "\t" << "Price of Bikes" << "\n\n";
 		for (int i = 0; i < b.size(); i++)
 		{
-			cout << i + 1 << "\t" << b[i].get_name() << "\n";
+			cout << i + 1 << "\t" << b[i].get_name() <<"\t$"<<b[i].get_price()<< "\n";
 		}
 	}
 };
@@ -201,10 +201,10 @@ public:
 	}
 	static void list()
 	{
-		cout << "\t\t\t\nS.No" << "\t" << "Name of Cars" << "\n\n";
+		cout << "\t\t\t\nS.No" << "\t" << "Name of Cars" <<"\t"<<"Price of Car"<< "\n\n";
 		for (int i = 0; i < c.size(); i++)
 		{
-			cout << i + 1 << ": " << c[i].get_name() << "\n";
+			cout << i + 1 << ": " << c[i].get_name() <<"\t$"<<c[i].get_price()<< "\n";
 		}
 	}
 };
@@ -304,10 +304,10 @@ public:
 	}
 	static void list()
 	{
-		cout << "\t\t\t\nS.No" << "\t" << "Name of Trucks" << "\n\n";
+		cout << "\t\t\t\nS.No" << "\t" << "Name of Trucks" << "\t" << "Price of Trucks" << "\n\n";
 		for (int i = 0; i < t.size(); i++)
 		{
-			cout << i + 1 << "\t" << t[i].get_name() << "\n";
+			cout << i + 1 << "\t" << t[i].get_name() <<"\t$"<<t[i].get_price()<< "\n";
 		}
 	}
 };
