@@ -1,7 +1,10 @@
+#define NOMINMAX
 #include"allheaders.h"
 #include<conio.h>
 #include<cstdlib>
 #include<cstring>
+#include<algorithm>
+#include<Windows.h>
 vector<bikes> b;
 vector<cars> c;
 vector<trucks> t;
@@ -63,23 +66,23 @@ public:
 		int y;
 		double z;
 		cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-		cout << "\nEnter the Name of Bike: ";
+		cout << "\n\t\t\tEnter the Name of Bike: ";
 		getline(cin, x);
 		set_name(x);
-		cout << "\nEnter the Color of Bike: ";
+		cout << "\n\t\t\tEnter the Color of Bike: ";
 		cin >> x;
 		set_color(x);
-		cout << "\nEnter the availble units: ";
+		cout << "\n\t\t\tEnter the availble units: ";
 		cin >> y;
 		set_stock(y);
-		cout << "\nEnter the price: ";
+		cout << "\n\t\t\tEnter the price: ";
 		cin >> z;
 		set_price(z);
-		cout << "\nEnter the horespower of the engine: ";
+		cout << "\n\t\t\tEnter the horespower of the engine: ";
 		cin >> y;
 		cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		set_horsepower(y);
-		cout << "\nEnter the Bike's Description: ";
+		cout << "\n\t\t\tEnter the Bike's Description: ";
 		getline(cin, x);
 		set_description(x);
 	}
@@ -151,26 +154,26 @@ public:
 		int y;
 		double z;
 		cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-		cout << "\nEnter the Name of Car: ";
+		cout << "\n\t\t\tEnter the Name of Car: ";
 		getline(cin, x);
 		set_name(x);
-		cout << "\nEnter the Color of Car: ";
+		cout << "\n\t\t\tEnter the Color of Car: ";
 		cin >> x;
 		set_color(x);
-		cout << "\nEnter the availble units: ";
+		cout << "\n\t\t\tEnter the availble units: ";
 		cin >> y;
 		set_stock(y);
-		cout << "\nEnter the price: ";
+		cout << "\n\t\t\tEnter the price: ";
 		cin >> z;
 		set_price(z);
-		cout << "\nEnter the horespower of the engine: ";
+		cout << "\n\t\t\tEnter the horespower of the engine: ";
 		cin >> y;
 		set_horsepower(y);
-		cout << "\nEnter the Transmission of the Car: ";
+		cout << "\n\t\t\tEnter the Transmission of the Car: ";
 		cin >> x;
 		set_transmission(x);
 		cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-		cout << "\nEnter the Car's Description: ";
+		cout << "\n\t\t\tEnter the Car's Description: ";
 		getline(cin, x);
 		set_description(x);
 	}
@@ -254,26 +257,26 @@ public:
 		int y;
 		double z;
 		cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-		cout << "\nEnter the Name of Truck: ";
+		cout << "\n\t\t\tEnter the Name of Truck: ";
 		getline(cin, x);
 		set_name(x);
-		cout << "\nEnter the Color of Truck: ";
+		cout << "\n\t\t\tEnter the Color of Truck: ";
 		cin >> x;
 		set_color(x);
-		cout << "\nEnter the availble units: ";
+		cout << "\n\t\t\tEnter the availble units: ";
 		cin >> y;
 		set_stock(y);
-		cout << "\nEnter the price: ";
+		cout << "\n\t\t\tEnter the price: ";
 		cin >> z;
 		set_price(z);
-		cout << "\nEnter the Loading Capapcity of the truck: ";
+		cout << "\n\t\t\tEnter the Loading Capapcity of the truck: ";
 		cin >> y;
 		set_loading_capacity(y);
-		cout << "\nEnter the horespower of the engine: ";
+		cout << "\n\t\t\tEnter the horespower of the engine: ";
 		cin >> y;
 		cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		set_horsepower(y);
-		cout << "\nEnter the Truck's Description: ";
+		cout << "\n\t\t\tEnter the Truck's Description: ";
 		getline(cin, x);
 		set_description(x);
 	}
@@ -374,13 +377,18 @@ public:
 	void menu()
 	{
 		system("cls");
-		cout << "\t\tCustomer Portal\n";
-		cout << "\t\t***************\n\n\n";
-		cout << "Select the Vehicle you want to add to cart: \n\n";
-		cout << "\t 1. Bikes." << endl;
-		cout << "\t 2. Cars." << endl;
-		cout << "\t 3. Trucks." << endl;
-		cout << "\t 4.proceed to checkout" << endl;
+		cout << "\t\t\t|-------------------------------------------------------------------------------------|" << endl;
+		Sleep(50);
+		cout << "\t\t\t|                       CUSTOMER PORTAL                                               |" << endl;
+		Sleep(50);
+		cout << "\t\t\t|                      ******************                                             |" << endl;
+		Sleep(50);
+		cout << "\t\t\t|-------------------------------------------------------------------------------------|" << endl;
+		cout << "\t\t\tSelect the Vehicle you want to add to cart: \n\n";
+		cout << "\t\t\t1. Bikes." << endl;
+		cout << "\t\t\t2. Cars." << endl;
+		cout << "\t\t\t3. Trucks." << endl;
+		cout << "\t\t\t4.proceed to checkout" << endl;
 		int s;
 		cin >> s;
 		switch (s)
@@ -402,10 +410,15 @@ public:
 	void bike_menu()
 	{
 		system("cls");
-		cout << "\t\tCustomer Portal\n";
-		cout << "\t\t***************\n\n\n";
+		cout << "\t\t\t|-------------------------------------------------------------------------------------|" << endl;
+		Sleep(50);
+		cout << "\t\t\t|                       CUSTOMER PORTAL                                               |" << endl;
+		Sleep(50);
+		cout << "\t\t\t|                      ******************                                             |" << endl;
+		Sleep(50);
+		cout << "\t\t\t|-------------------------------------------------------------------------------------|" << endl;
 		bikes::list();
-		cout << "\nEnter the S.No of the Bike you want to add to cart: ";
+		cout << "\n\t\t\tEnter the S.No of the Bike you want to add to cart: ";
 		int n;
 		cin >> n;
 		n--;
@@ -417,10 +430,15 @@ public:
 	void car_menu()
 	{
 		system("cls");
-		cout << "\t\tCustomer Portal\n";
-		cout << "\t\t***************\n\n\n";
+		cout << "\t\t\t|-------------------------------------------------------------------------------------|" << endl;
+		Sleep(50);
+		cout << "\t\t\t|                       CUSTOMER PORTAL                                               |" << endl;
+		Sleep(50);
+		cout << "\t\t\t|                      ******************                                             |" << endl;
+		Sleep(50);
+		cout << "\t\t\t|-------------------------------------------------------------------------------------|" << endl;
 		cars::list();
-		cout << "\nEnter the S.No of the Car you want to add to cart: ";
+		cout << "\n\t\t\tEnter the S.No of the Car you want to add to cart: ";
 		int n;
 		cin >> n;
 		n--;
@@ -433,10 +451,15 @@ public:
 	void truck_menu()
 	{
 		system("cls");
-		cout << "\t\tCustomer Portal\n";
-		cout << "\t\t***************\n\n\n";
+		cout << "\t\t\t|-------------------------------------------------------------------------------------|" << endl;
+		Sleep(50);
+		cout << "\t\t\t|                       CUSTOMER PORTAL                                               |" << endl;
+		Sleep(50);
+		cout << "\t\t\t|                      ******************                                             |" << endl;
+		Sleep(50);
+		cout << "\t\t\t|-------------------------------------------------------------------------------------|" << endl;
 		trucks::list();
-		cout << "\nEnter the S.No of the Truck you want to add to cart: ";
+		cout << "\n\t\t\tEnter the S.No of the Truck you want to add to cart: ";
 		int n;
 		cin >> n;
 		n--;
@@ -489,21 +512,21 @@ public:
 	{
 		system("CLS");
 		string a;
-		cout << "\t Please enter your name" << endl;
+		cout << "\t\t\tPlease enter your name" << endl;
 		cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		getline(cin, a);
 		set_customerNmae(a);
-		cout << endl << "\t Please enter your contact number" << endl;
+		cout << endl << "\t\t\tPlease enter your contact number" << endl;
 		long int b;
 		cin >> b;
 		set_contact(b);
-		cout << endl << "\t Please enter your CNIC number" << endl;
+		cout << endl << "\t\t\tPlease enter your CNIC number" << endl;
 		string c;
 		cin.clear();
 		cin.ignore();
 		getline(cin, c);
 	here0:
-		cout << endl << "\t Please enter your 16 digit long debit card number" << endl;
+		cout << endl << "\t\t\tPlease enter your 16 digit long debit card number" << endl;
 		string cnumber;
 		int ch;
 		while ((ch = _getch()) != '\r') {
@@ -526,15 +549,15 @@ public:
 		}
 		catch (int)
 		{
-			cout << endl <<  "CARD NUMBER MUST BE 16 DIGITS LONG! " << endl;
+			cout << endl <<  "\t\t\tCARD NUMBER MUST BE 16 DIGITS LONG! " << endl;
 			goto here0;
 		}
 		std::cout.put('\n');
-		cout << endl << "\t Are you filer?" << endl;
+		cout << endl << "\t\t\tAre you filer?" << endl;
 		string e;
 		cin >> e;
 		here1:
-		cout << endl << "\t Please enter your CVV code " << endl;
+		cout << endl << "\t\t\tPlease enter your CVV code " << endl;
 		string code;
 		int ch1;
 		while ((ch1 = _getch()) != '\r') {
@@ -557,7 +580,7 @@ public:
 		}
 		catch (int)
 		{
-			cout << endl <<  "CARD PIN MUST BE 3 DIGITS LONG! " << endl;
+			cout << endl <<  "\t\t\tCARD PIN MUST BE 3 DIGITS LONG! " << endl;
 			goto here1;
 		}
 
@@ -643,7 +666,7 @@ public:
 	void password()
 	{
 		system("CLS");
-		cout << "\tPlease Enter the password." << endl;
+		cout << "\t\t\tPlease Enter the password." << endl;
 		string password;
 		int ch;
 
@@ -667,8 +690,8 @@ public:
 		}
 		else
 		{
-			cout << "\nwrong password.\n";
-			cout << "\n1: Retry\n2: Exit";
+			cout << "\n\t\tWrong password.\n";
+			cout << "\n\t\t1: Retry\n\t\t2: Exit";
 			int x;
 			cin >> x;
 			switch (x)
@@ -688,15 +711,21 @@ std::cout.put('\n');
 
 		{
 			system("CLS");
-			cout << "\t WELCOME BACK ADMIN." << endl;
-			cout << "\t*********************" << endl << endl << endl << endl;
-			cout << "\t1. Modification in vehicles features." << endl;
-			cout << "\t2. Change in vehicles." << endl;
-			cout << "\t3. View All Vehicles.\n";
-			cout << "\t4. Delete a Vehicle.\n";
-			cout << "\t5. Return to main menu." << endl;
-			cout << "\t6. View purchase history" << endl;
-			cout << "\t7. Exit.\n";
+			cout << "\t\t\t|-------------------------------------------------------------------------------------|" << endl;
+			Sleep(50);
+			cout << "\t\t\t|                       WELCOME BACK ADMIN                                            |" << endl;
+			Sleep(50);
+			cout << "\t\t\t|                      ********************                                           |" << endl;
+			Sleep(50);
+			cout << "\t\t\t|-------------------------------------------------------------------------------------|" << endl;
+			Sleep(50);
+			cout << "\t\t\t1. Modification in vehicles features." << endl;
+			cout << "\t\t\t2. Change in vehicles." << endl;
+			cout << "\t\t\t3. View All Vehicles.\n";
+			cout << "\t\t\t4. Delete a Vehicle.\n";
+			cout << "\t\t\t5. Return to main menu." << endl;
+			cout << "\t\t\t6. View purchase history" << endl;
+			cout << "\t\t\t7. Exit.\n";
 			int a;
 			cin >> a;
 			system("CLS");
@@ -704,11 +733,17 @@ std::cout.put('\n');
 			{
 			case 1:
 			{
-				cout << "\t MODIFICATION IN VEHICLE FEATURES." << endl;
-				cout << "\t***********************************" << endl << endl << endl << endl;
-				cout << "\t 1. Modification in cars inventory." << endl;
-				cout << "\t 2. Modification in trucks inventory." << endl;
-				cout << "\t 3. Modification in Bikes inventory." << endl;
+				cout << "\t\t\t|-------------------------------------------------------------------------------------|" << endl;
+				Sleep(50);
+				cout << "\t\t\t|                       MODIFICATION IN VEHICLE                                       |" << endl;
+				Sleep(50);
+				cout << "\t\t\t|                      *************************                                      |" << endl;
+				Sleep(50);
+				cout << "\t\t\t|-------------------------------------------------------------------------------------|" << endl;
+				Sleep(50);
+				cout << "\t\t\t1. Modification in cars inventory." << endl;
+				cout << "\t\t\t2. Modification in trucks inventory." << endl;
+				cout << "\t\t\t3. Modification in Bikes inventory." << endl;
 				int a;
 				cin >> a;
 				system("CLS");
@@ -732,11 +767,17 @@ std::cout.put('\n');
 			case 2:
 			{
 				{
-					cout << "\t CHANGE IN VEHICLE." << endl;
-					cout << "\t******************" << endl << endl << endl << endl;
-					cout << "\t 1. Addition in cars inventory." << endl;
-					cout << "\t 2. Addition in trucks inventory." << endl;
-					cout << "\t 3. Addition in Bikes inventory." << endl;
+					cout << "\t\t\t|-------------------------------------------------------------------------------------|" << endl;
+					Sleep(50);
+					cout << "\t\t\t|                       CHANGE IN VEHICLE                                            |" << endl;
+					Sleep(50);
+					cout << "\t\t\t|                      ********************                                           |" << endl;
+					Sleep(50);
+					cout << "\t\t\t|-------------------------------------------------------------------------------------|" << endl;
+					Sleep(50);
+					cout << "\t\t\t1. Addition in cars inventory." << endl;
+					cout << "\t\t\t2. Addition in trucks inventory." << endl;
+					cout << "\t\t\t3. Addition in Bikes inventory." << endl;
 					int s;
 					cin >> s;
 					system("CLS");
@@ -769,7 +810,7 @@ std::cout.put('\n');
 					}
 
 				}
-				cout << "\nPress Any key to return to the main menu.";
+				cout << "\n\t\tPress Any key to return to the main menu.";
 				cin.ignore();
 				cin.get();
 				menu();
@@ -777,20 +818,32 @@ std::cout.put('\n');
 			}
 			case 3:
 			{
-				cout << "\t WELCOME BACK ADMIN." << endl;
-				cout << "\t*********************" << endl << endl << endl << endl;
-				cout << "\t1. View All Bikes" << endl;
-				cout << "\t2. View All Cars" << endl;
-				cout << "\t3. View All Trucks\n";
-				cout << "\t4. Exit" << endl;
+				cout << "\t\t\t|-------------------------------------------------------------------------------------|" << endl;
+				Sleep(50);
+				cout << "\t\t\t|                       WELCOME BACK ADMIN                                            |" << endl;
+				Sleep(50);
+				cout << "\t\t\t|                      ********************                                           |" << endl;
+				Sleep(50);
+				cout << "\t\t\t|-------------------------------------------------------------------------------------|" << endl;
+				Sleep(50);
+				cout << "\t\t\t1. View All Bikes" << endl;
+				cout << "\t\t\t2. View All Cars" << endl;
+				cout << "\t\t\t3. View All Trucks\n";
+				cout << "\t\t\t4. Exit" << endl;
 				int a;
 				cin >> a;
 				switch (a)
 				{
 				case 1:
 					system("cls");
-					cout << "\t WELCOME BACK ADMIN." << endl;
-					cout << "\t*********************" << endl << endl << endl << endl;
+					cout << "\t\t\t|-------------------------------------------------------------------------------------|" << endl;
+					Sleep(50);
+					cout << "\t\t\t|                       WELCOME BACK ADMIN                                            |" << endl;
+					Sleep(50);
+					cout << "\t\t\t|                      ********************                                           |" << endl;
+					Sleep(50);
+					cout << "\t\t\t|-------------------------------------------------------------------------------------|" << endl;
+					Sleep(50);
 					cout << "\nS.No\tName\t\tStock\n\n";
 					for (int i = 0; i < b.size(); i++)
 					{
@@ -799,8 +852,14 @@ std::cout.put('\n');
 					break;
 				case 2:
 					system("cls");
-					cout << "\t WELCOME BACK ADMIN." << endl;
-					cout << "\t*********************" << endl << endl << endl << endl;
+					cout << "\t\t\t|-------------------------------------------------------------------------------------|" << endl;
+					Sleep(50);
+					cout << "\t\t\t|                       WELCOME BACK ADMIN                                            |" << endl;
+					Sleep(50);
+					cout << "\t\t\t|                      ********************                                           |" << endl;
+					Sleep(50);
+					cout << "\t\t\t|-------------------------------------------------------------------------------------|" << endl;
+					Sleep(50);
 					cout << "\nS.No\tName\t\tStock\n\n";
 					for (int i = 0; i < c.size(); i++)
 					{
@@ -809,8 +868,14 @@ std::cout.put('\n');
 					break;
 				case 3:
 					system("cls");
-					cout << "\t WELCOME BACK ADMIN." << endl;
-					cout << "\t*********************" << endl << endl << endl << endl;
+					cout << "\t\t\t|-------------------------------------------------------------------------------------|" << endl;
+					Sleep(50);
+					cout << "\t\t\t|                       WELCOME BACK ADMIN                                            |" << endl;
+					Sleep(50);
+					cout << "\t\t\t|                      ********************                                           |" << endl;
+					Sleep(50);
+					cout << "\t\t\t|-------------------------------------------------------------------------------------|" << endl;
+					Sleep(50);
 					cout << "\nS.No\tName\t\tStock\n\n";
 					for (int i = 0; i < t.size(); i++)
 					{
@@ -818,58 +883,83 @@ std::cout.put('\n');
 					}
 					break;
 				default:
-					cout << "\nYou Entered and Invalid choice\n\nPress any key to Exit.";
+					cout << "\n\t\tYou Entered and Invalid choice\n\nPress any key to Exit.";
 					cin.ignore();
 					cin.get();
 					delete this;
 					exit(0);
 					break;
 				}
-				cout << "\n\nPress any key to return to main menu.";
+				cout << "\n\n\t\tPress any key to return to main menu.";
 				cin.ignore();
 				cin.get();
 				menu();
 			}
 			case 4:
-				cout << "\t WELCOME BACK ADMIN." << endl;
-				cout << "\t*********************" << endl << endl << endl << endl;
-				cout << "\t1. Delete a Bike" << endl;
-				cout << "\t2. Delete a Car" << endl;
-				cout << "\t3. Delete a Truck\n";
-				cout << "\t4. Exit" << endl;
+				
+				cout << "\t\t\t|-------------------------------------------------------------------------------------|" << endl;
+				Sleep(50);
+				cout << "\t\t\t|                       WELCOME BACK ADMIN                                            |" << endl;
+				Sleep(50);
+				cout << "\t\t\t|                      ********************                                           |" << endl;
+				Sleep(50);
+				cout << "\t\t\t|-------------------------------------------------------------------------------------|" << endl;
+				Sleep(50);
+				cout << "\t\t\t1. Delete a Bike" << endl;
+				cout << "\t\t\t2. Delete a Car" << endl;
+				cout << "\t\t\t3. Delete a Truck\n";
+				cout << "\t\t\t4. Exit" << endl;
 				int a;
 				cin >> a;
 				switch (a)
 				{
 				case 1:
-					cout << "\t WELCOME BACK ADMIN." << endl;
-					cout << "\t*********************" << endl << endl << endl << endl;
+					cout << "\t\t\t|-------------------------------------------------------------------------------------|" << endl;
+					Sleep(50);
+					cout << "\t\t\t|                       WELCOME BACK ADMIN                                            |" << endl;
+					Sleep(50);
+					cout << "\t\t\t|                      ********************                                           |" << endl;
+					Sleep(50);
+					cout << "\t\t\t|-------------------------------------------------------------------------------------|" << endl;
+					Sleep(50);
 					bikes::list();
-					cout << "\n\nEnter the S.No of the bike you want to delete: ";
+					cout << "\n\n\t\tEnter the S.No of the bike you want to delete: ";
 					cin >> a;
 					a--;
 					b.erase(b.begin() + a);
 					break;
 				case 2:
-					cout << "\t WELCOME BACK ADMIN." << endl;
-					cout << "\t*********************" << endl << endl << endl << endl;
+					cout << "\t\t\t|-------------------------------------------------------------------------------------|" << endl;
+					Sleep(50);
+					cout << "\t\t\t|                       WELCOME BACK ADMIN                                            |" << endl;
+					Sleep(50);
+					cout << "\t\t\t|                      ********************                                           |" << endl;
+					Sleep(50);
+					cout << "\t\t\t|-------------------------------------------------------------------------------------|" << endl;
+					Sleep(50);
 					cars::list();
-					cout << "\n\nEnter the S.No of the Car you want to delete: ";
+					cout << "\n\n\t\tEnter the S.No of the Car you want to delete: ";
 					cin >> a;
 					a--;
 					c.erase(c.begin() + a);
 					break;
 				case 3:
-					cout << "\t WELCOME BACK ADMIN." << endl;
-					cout << "\t*********************" << endl << endl << endl << endl;
+					cout << "\t\t\t|-------------------------------------------------------------------------------------|" << endl;
+					Sleep(50);
+					cout << "\t\t\t|                       WELCOME BACK ADMIN                                              |" << endl;
+					Sleep(50);
+					cout << "\t\t\t|                      ******************                                             |" << endl;
+					Sleep(50);
+					cout << "\t\t\t|-------------------------------------------------------------------------------------|" << endl;
+					Sleep(50);
 					trucks::list();
-					cout << "\n\nEnter the S.No of the Truck you want to delete: ";
+					cout << "\n\n\t\t\tEnter the S.No of the Truck you want to delete: ";
 					cin >> a;
 					a--;
 					t.erase(t.begin() + a);
 					break;
 				}
-				cout << "\n\nPress Any key to return to main menu.\n";
+				cout << "\n\n\t\t\tPress Any key to return to main menu.\n";
 				cin.ignore();
 				cin.get();
 				menu();
@@ -888,7 +978,7 @@ std::cout.put('\n');
 				{
 					cout << obj;
 				}
-				cout << "\n\n\nPress Any key to return to main menu.";
+				cout << "\n\n\n\t\t\tPress Any key to return to main menu.";
 				cin.ignore();
 				cin.get();
 				menu();
@@ -916,19 +1006,25 @@ void admin::car()
 	cars::list();
 	cout << endl;
 	int a;
-	cout << "Enter the serial number of car you want to modify?" << endl;
+	cout << "\t\t\tEnter the serial number of car you want to modify?" << endl;
 	cin >> a;
 	system("CLS");
 	while (a)
 	{
-		cout << "\t MODIFICATION CAR FEATURES IN INVENTORY." << endl;
-		cout << "\t*********************************" << endl << endl << endl << endl;
-		cout << "\t 1. Modify price" << endl;
-		cout << "\t 2. Modify color" << endl;
-		cout << "\t 3. Modify stock" << endl;
-		cout << "\t 4. Modify horsepower" << endl;
-		cout << "\t 5. Modify description" << endl;
-		cout << "\t 6. Modify name" << endl;
+		cout << "\t\t\t|-------------------------------------------------------------------------------------|" << endl;
+		Sleep(50);
+		cout << "\t\t\t|                       MODIFICATION IN CARS                                          |" << endl;
+		Sleep(50);
+		cout << "\t\t\t|                      ***********************                                        |" << endl;
+		Sleep(50);
+		cout << "\t\t\t|-------------------------------------------------------------------------------------|" << endl;
+		Sleep(50);
+		cout << "\t\t\t1. Modify price" << endl;
+		cout << "\t\t\t2. Modify color" << endl;
+		cout << "\t\t\t3. Modify stock" << endl;
+		cout << "\t\t\t4. Modify horsepower" << endl;
+		cout << "\t\t\t5. Modify description" << endl;
+		cout << "\t\t\t6. Modify name" << endl;
 		int d;
 		cin >> d;
 		system("CLS");
@@ -936,7 +1032,7 @@ void admin::car()
 		{
 		case 1:
 		{
-			cout << "Please Enter new price?";
+			cout << "\t\t\tPlease Enter new price?";
 			float b;
 			cin >> b;
 			system("CLS");
@@ -947,10 +1043,10 @@ void admin::car()
 			}
 			catch (int)
 			{
-				cout << "You entered wrong price" << endl;
-				cout << "return to main menu?" << endl;
-				cout << "1.Yes" << endl;
-				cout << "2.No" << endl;
+				cout << "\t\t\tYou entered wrong price" << endl;
+				cout << "\t\t\treturn to main menu?" << endl;
+				cout << "\t\t\t1.Yes" << endl;
+				cout << "\t\t\t2.No" << endl;
 				int k;
 				cin >> k;
 				if (k == 1)
@@ -974,7 +1070,7 @@ void admin::car()
 		}
 		case 2:
 		{
-			cout << "Please Enter new color?";
+			cout << "\t\t\tPlease Enter new color?";
 			string b;
 			cin >> b;
 			for (int i = a - 1; i < a; i++)
@@ -986,7 +1082,7 @@ void admin::car()
 		}
 		case 3:
 		{
-			cout << "Please Enter new stock?";
+			cout << "\t\t\tPlease Enter new stock?";
 			int b;
 			cin >> b;
 			for (int i = a - 1; i < a; i++)
@@ -998,7 +1094,7 @@ void admin::car()
 		}
 		case 4:
 		{
-			cout << "Please Enter new horse power?";
+			cout << "\t\t\tPlease Enter new horse power?";
 			int b;
 			cin >> b;
 			for (int i = a - 1; i < a; i++)
@@ -1010,7 +1106,7 @@ void admin::car()
 		}
 		case 5:
 		{
-			cout << "Please Enter new description?";
+			cout << "\t\t\tPlease Enter new description?";
 			string b;
 			cin.ignore();
 			getline(cin, b);
@@ -1023,7 +1119,7 @@ void admin::car()
 		}
 		case 6:
 		{
-			cout << "Please Enter new name?";
+			cout << "\t\t\tPlease Enter new name?";
 			string b;
 			cin.ignore();
 			getline(cin, b);
@@ -1046,19 +1142,25 @@ void admin::truck()
 	trucks::list();
 	cout << endl;
 	int a;
-	cout << "Enter the serial number of car you want to modify?" << endl;
+	cout << "\t\t\tEnter the serial number of car you want to modify?" << endl;
 	cin >> a;
 	system("CLS");
 	while (a)
 	{
-		cout << "\t MODIFICATION OF TRUCK FEATURES IN INVENTORY." << endl;
-		cout << "\t*********************************" << endl << endl << endl << endl;
-		cout << "\t 1. Modify price" << endl;
-		cout << "\t 2. Modify color" << endl;
-		cout << "\t 3. Modify stock" << endl;
-		cout << "\t 4. Modify horsepower" << endl;
-		cout << "\t 5. Modify description" << endl;
-		cout << "\t 6. Modify name" << endl;
+		cout << "\t\t\t|-------------------------------------------------------------------------------------|" << endl;
+		Sleep(50);
+		cout << "\t\t\t|                       MODIFICATION IN TRUCK                                         |" << endl;
+		Sleep(50);
+		cout << "\t\t\t|                      ************************                                        |" << endl;
+		Sleep(50);
+		cout << "\t\t\t|-------------------------------------------------------------------------------------|" << endl;
+		Sleep(50);
+		cout << "\t\t\t1. Modify price" << endl;
+		cout << "\t\t\t2. Modify color" << endl;
+		cout << "\t\t\t3. Modify stock" << endl;
+		cout << "\t\t\t4. Modify horsepower" << endl;
+		cout << "\t\t\t5. Modify description" << endl;
+		cout << "\t\t\t6. Modify name" << endl;
 		int d;
 		cin >> d;
 		system("CLS");
@@ -1066,7 +1168,7 @@ void admin::truck()
 		{
 		case 1:
 		{
-			cout << "Please Enter new price?";
+			cout << "\t\t\tPlease Enter new price?";
 			float b;
 			cin >> b;
 			system("CLS");
@@ -1077,10 +1179,10 @@ void admin::truck()
 			}
 			catch (int)
 			{
-				cout << "You entered wrong price" << endl;
-				cout << "return to main menu?" << endl;
-				cout << "1.Yes" << endl;
-				cout << "2.No" << endl;
+				cout << "\t\t\tYou entered wrong price" << endl;
+				cout << "\t\t\treturn to main menu?" << endl;
+				cout << "\t\t\t1.Yes" << endl;
+				cout << "\t\t\t2.No" << endl;
 				int k;
 				cin >> k;
 				if (k == 1)
@@ -1105,7 +1207,7 @@ void admin::truck()
 		}
 		case 2:
 		{
-			cout << "Please Enter new color?";
+			cout << "\t\t\tPlease Enter new color?";
 			string b;
 			cin >> b;
 			for (int i = a - 1; i < a; i++)
@@ -1117,7 +1219,7 @@ void admin::truck()
 		}
 		case 3:
 		{
-			cout << "Please Enter new stock?";
+			cout << "\t\t\tPlease Enter new stock?";
 			int b;
 			cin >> b;
 			for (int i = a - 1; i < a; i++)
@@ -1129,7 +1231,7 @@ void admin::truck()
 		}
 		case 4:
 		{
-			cout << "Please Enter new horse power?";
+			cout << "\t\t\tPlease Enter new horse power?";
 			int b;
 			cin >> b;
 			for (int i = a - 1; i < a; i++)
@@ -1141,7 +1243,7 @@ void admin::truck()
 		}
 		case 5:
 		{
-			cout << "Please Enter new description?";
+			cout << "\t\t\tPlease Enter new description?";
 			string b;
 			cin.ignore();
 			getline(cin, b);
@@ -1154,7 +1256,7 @@ void admin::truck()
 		}
 		case 6:
 		{
-			cout << "Please Enter new name?";
+			cout << "\t\t\tPlease Enter new name?";
 			string b;
 			cin.ignore();
 			getline(cin, b);
@@ -1177,19 +1279,25 @@ void admin::bike()
 	bikes::list();
 	cout << endl;
 	int a;
-	cout << "Enter the serial number of car you want to modify?" << endl;
+	cout << "\t\t\tEnter the serial number of car you want to modify?" << endl;
 	cin >> a;
 	system("CLS");
 	while (a)
 	{
-		cout << "\t MODIFICATION OF BIKE FEATURES IN INVENTORY." << endl;
-		cout << "\t**********************************************" << endl << endl << endl << endl;
-		cout << "\t 1. Modify price" << endl;
-		cout << "\t 2. Modify color" << endl;
-		cout << "\t 3. Modify stock" << endl;
-		cout << "\t 4. Modify horsepower" << endl;
-		cout << "\t 5. Modify description" << endl;
-		cout << "\t 6. Modify name" << endl;
+		cout << "\t\t\t|-------------------------------------------------------------------------------------|" << endl;
+		Sleep(50);
+		cout << "\t\t\t|                       MODIFICATION IN BIKES                                         |" << endl;
+		Sleep(50);
+		cout << "\t\t\t|                      ***********************                                        |" << endl;
+		Sleep(50);
+		cout << "\t\t\t|-------------------------------------------------------------------------------------|" << endl;
+		Sleep(50);
+		cout << "\t\t\t1. Modify price" << endl;
+		cout << "\t\t\t 2. Modify color" << endl;
+		cout << "\t\t\t 3. Modify stock" << endl;
+		cout << "\t\t\t 4. Modify horsepower" << endl;
+		cout << "\t\t\t 5. Modify description" << endl;
+		cout << "\t\t\t 6. Modify name" << endl;
 		int d;
 		cin >> d;
 		system("CLS");
@@ -1197,7 +1305,7 @@ void admin::bike()
 		{
 		case 1:
 		{
-			cout << "Please Enter new price?";
+			cout << "\t\t\tPlease Enter new price?";
 			float x;
 			cin >> x;
 			system("CLS");
@@ -1208,10 +1316,10 @@ void admin::bike()
 			}
 			catch (int)
 			{
-				cout << "You entered wrong price" << endl;
-				cout << "return to main menu?" << endl;
-				cout << "1.Yes" << endl;
-				cout << "2.No" << endl;
+				cout << "\t\t\tYou entered wrong price" << endl;
+				cout << "\t\t\treturn to main menu?" << endl;
+				cout << "\t\t\t1.Yes" << endl;
+				cout << "\t\t\t2.No" << endl;
 				int k;
 				cin >> k;
 				if (k == 1)
@@ -1235,7 +1343,7 @@ void admin::bike()
 		}
 		case 2:
 		{
-			cout << "Please Enter new color?";
+			cout << "\t\t\tPlease Enter new color?";
 			string x;
 			cin >> x;
 			for (int i = a - 1; i < a; i++)
@@ -1247,7 +1355,7 @@ void admin::bike()
 		}
 		case 3:
 		{
-			cout << "Please Enter new stock?";
+			cout << "\t\t\tPlease Enter new stock?";
 			int x;
 			cin >> x;
 			for (int i = a - 1; i < a; i++)
@@ -1259,7 +1367,7 @@ void admin::bike()
 		}
 		case 4:
 		{
-			cout << "Please Enter new horse power?";
+			cout << "\t\t\tPlease Enter new horse power?";
 			int x;
 			cin >> x;
 			for (int i = a - 1; i < a; i++)
@@ -1271,7 +1379,7 @@ void admin::bike()
 		}
 		case 5:
 		{
-			cout << "Please Enter new description?";
+			cout << "\t\t\tPlease Enter new description?";
 			string x;
 			cin.ignore();
 			getline(cin, x);
@@ -1284,7 +1392,7 @@ void admin::bike()
 		}
 		case 6:
 		{
-			cout << "Please Enter new name?";
+			cout << "\t\t\tPlease Enter new name?";
 			string x;
 			cin.ignore();
 			getline(cin, x);
@@ -1310,12 +1418,28 @@ ostream& operator<<(ostream& dout, vehicles& obj)
 int main()
 {
 	admin* obj = new admin();
-	cout << "\tWELCOME TO SASUKE GARAGE" << endl;
-	cout << "\t*************************" << endl << endl << endl << endl;
-	cout << "\tPlease Choose any one:" << endl;
-	cout << "\t1.Customer." << endl;
-	cout << "\t2.Admin." << endl;
-	cout << "\t3.Exit." << endl;
+	Sleep(50);
+	cout << "\n\n\n\n";
+	Sleep(50);
+	cout << "\t\t\t|-------------------------------------------------------------------------------------|" << endl;
+	Sleep(50);
+	cout << "\t\t\t|                       CAR DEALERSHIP MANAGEMENT SYSTEM                              |" << endl;
+	Sleep(50);
+	cout << "\t\t\t|                       *********************************                             |" << endl;
+	Sleep(50);
+	cout << "\t\t\t|                               SASUKE GARAGE                                         |" << endl;
+	Sleep(50);
+	cout << "\t\t\t|                             ****************                                        |" << endl;
+	Sleep(50);
+	cout << "\t\t\t|                                                                                     |" << endl;
+	Sleep(50);
+	cout << "\t\t\t|-------------------------------------------------------------------------------------|" << endl;
+	Sleep(50);
+	cout << "\n\n\n\n";
+	cout << "\t\t\tPlease Choose any one:" << endl;
+	cout << "\t\t\t1.Customer." << endl;
+	cout << "\t\t\t2.Admin." << endl;
+	cout << "\t\t\t3.Exit." << endl;
 	int a;
 	cin >> a;
 	switch (a)
