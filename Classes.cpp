@@ -1418,7 +1418,7 @@ ostream& operator<<(ostream& dout, vehicles& obj)
 }
 int main()
 {
-	system("color E0");
+	system("color 70");
 	admin* obj = new admin();
 	Sleep(50);
 	cout << "\n\n\n\n";
