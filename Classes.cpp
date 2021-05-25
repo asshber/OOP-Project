@@ -204,7 +204,7 @@ public:
 		cout << "\t\t\t\nS.No" << "\t" << "Name of Cars" <<"\t"<<"Price of Car"<< "\n\n";
 		for (int i = 0; i < c.size(); i++)
 		{
-			cout << i + 1 << ": " << c[i].get_name() <<"\t$"<<c[i].get_price()<< "\n";
+			cout << i + 1 << ": " << c[i].get_name() <<"                 "<<"$"<<c[i].get_price()<< "\n";
 		}
 	}
 };
@@ -916,8 +916,23 @@ std::cout.put('\n');
 					cout << "\t\t|-------------------------------------------------------------------------------------|" << endl;
 					Sleep(50);
 					bikes::list();
+					c3:
 					cout << "\n\n\t\tEnter the S.No of the bike you want to delete: ";
 					cin >> a;
+					try
+					{
+						if (a > b.size())
+						{
+							throw 1;
+						}
+					}
+					catch (int)
+					{
+						cout << "\n\n\t\t\tYou entred wrong option.Press any key to rety.";
+						cin.ignore();
+						cin.get();
+						goto c3;
+					}
 					a--;
 					b.erase(b.begin() + a);
 					break;
@@ -931,8 +946,23 @@ std::cout.put('\n');
 					cout << "\t\t|-------------------------------------------------------------------------------------|" << endl;
 					Sleep(50);
 					cars::list();
+					c1:
 					cout << "\n\n\t\tEnter the S.No of the Car you want to delete: ";
 					cin >> a;
+					try
+					{
+						if (a > c.size())
+						{
+							throw 1;
+						}
+					}
+					catch (int)
+					{
+						cout << "\n\n\t\t\tYou entred wrong option.Press any key to rety.";
+						cin.ignore();
+						cin.get();
+						goto c1;
+					}
 					a--;
 					c.erase(c.begin() + a);
 					break;
@@ -946,9 +976,24 @@ std::cout.put('\n');
 					cout << "\t\t|-------------------------------------------------------------------------------------|" << endl;
 					Sleep(50);
 					trucks::list();
+					c2:
 					cout << "\n\n\t\t\tEnter the S.No of the Truck you want to delete: ";
 					cin >> a;
 					a--;
+					try
+					{
+						if (a > t.size())
+						{
+							throw 1;
+						}
+					}
+					catch (int)
+					{
+						cout << "\n\n\t\t\tYou entred wrong option.Press any key to rety.";
+						cin.ignore();
+						cin.get();
+						goto c2;
+					}
 					t.erase(t.begin() + a);
 					break;
 				}
